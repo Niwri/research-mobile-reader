@@ -12,7 +12,7 @@ Has a "Full Text" feature that extracts all the text in the PDF and combines it 
 **1. PDF Extractor**  
 Given a PDF file of the research paper, it will convert the PDF into formatted data for the app to organize into a mobile-friendly view.
 
-**2. Mobile Viewer**
+**2. Mobile Viewer**  
 Reads the formatted data and organizes it into a mobile-friendly view. The user should be able to modify the view to make it more personalized and readable.
 
 ## Current Status
