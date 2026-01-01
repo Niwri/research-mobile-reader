@@ -18,7 +18,7 @@ Reads the formatted data and organizes it into a mobile-friendly view. The user 
 ## Current Status
 So cooked rn. 
 
-Currently experimenting PDF extractor ideas in python.
+Currently experimenting data extractor ideas in python.
 
 ## Ideal Solution
 The pipeline is ran entirely on mobile
