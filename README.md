@@ -9,10 +9,10 @@ Has "Liquid Mode" feature, making general PDFs mobile-friendly to read. However,
 Has a "Full Text" feature that extracts all the text in the PDF and combines it in a mobile-friendly view. However, the texts extracted does not differentiate between sections (tables, figures, main body, footnotes, etc.) and equations. 
 
 ## Pipeline
-**1. PDF Extractor**  
-Given a PDF file of the research paper, it will convert the PDF into formatted data for the app to organize into a mobile-friendly view.
+**1. Data Extractor**  
+Given a PDF file or Latex files of the research paper, it will convert them into formatted data for the app to organize into a mobile-friendly view.
 
-**2. Mobile Viewer**
+**2. Mobile Viewer**  
 Reads the formatted data and organizes it into a mobile-friendly view. The user should be able to modify the view to make it more personalized and readable.
 
 ## Current Status

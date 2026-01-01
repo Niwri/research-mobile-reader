@@ -1,2 +1,0 @@
-# PDF Extractor
-TBA
