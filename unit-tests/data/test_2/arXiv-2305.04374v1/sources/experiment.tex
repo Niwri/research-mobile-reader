@@ -1,0 +1,161 @@
+\section{Experiments}
+\label{sec:experiment}
+
+We first present our results of spatially consistent single view lighting prediction and then our results of spatiotemporally consistent video lighting prediction, on both synthetic and real data. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/singleSyn.pdf}
+\caption{Single view lighting prediction on our synthetic dataset. Our method generates high-quality lighting prediction with detailed reflection as well as HDR visible and invisible light sources, which can support realistic rendering of both glossy and mirror materials. Our lighting predictions using predicted depth maps is comparable to those using ground truth depth maps, with only slight distortion of the reflection and blur of the HDR light sources.}
+\label{fig:singleSyn}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/singleInsertion.pdf}
+\caption{Comparison of single view lighting prediction for object insertion on Garon et al. dataset \cite{garon2019fast}. Our framework can recover detailed reflection as well as visible and invisible HDR light sources, with various light transport effects such as directional lighting, global illumination, and occlusion being correctly modeled, which leads to realistic rendering for both mirror and glossy objects at any given location in the scene. }
+\label{fig:singleInsertion}
+\end{figure*}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\multirow{2}{*}{} & \multicolumn{2}{|c|}{SGLV}  & RGB$\alpha$ & Pred.   \\ 
+\cline{2-4}  
+& Init. $\dot{L}$  & Blended $L$  & Blended $L$  & depth\\
+\hline
+Env $\mathcal{L}_{L_2}$ ($10^{-1}$)  & 9.52 & \textbf{9.02} & 9.05 & 10.4\\
+\hline
+Render $\mathcal{L}_{R}$ ($10^{-2}$) & 2.92 & \textbf{2.78} & 2.88 & 3.23\\
+\hline
+\end{tabular}
+\caption{Quantitative results of single view lighting prediction on our synthetic dataset. We observe that our hybrid framework can greatly improve accuracy compared to the pure volume-based framework. Our SGLV representation can better model HDR light sources compared to RGB$\alpha$ volume, which leads to smaller rendering loss. We include our lighting prediction accuracy with predicted depth in the last column.}
+\label{tab:synSingle}
+\end{table}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+& Glossy bunnies & Mirror spheres \\
+\hline
+\cite{gardner2017indoor} & 61.7\% & 78.2\% \\
+\hline 
+ \cite{garon2019fast} & 59.9\%  & 77.6\%  \\
+\hline
+\cite{li2020inverse} & 46.3\%  & 77.1\%  \\
+\hline
+\cite{wang2021learning} & 66.6\% & 66.6\% \\
+\hline
+\end{tabular}
+\caption{User study of object insertion on the Garon et al. \cite{garon2019fast} dataset. For all 20 indoor scenes in the dataset, we place mirror spheres and glossy bunnies at multiple locations inside the scenes and render them with predicted HDR environment maps. Given randomly selected pairs of object insertion results, users will be asked to judge which result is more realistic. Each user will evaluate 20 pairs and 200 users recruited through Amazon Turk joined this study. We report the percentage of users who consider our method to be more realistic. For mirror sphere insertion, our results are much better compared to prior state-of-the-arts, as 60\% to 80\% users agree that they are more realistic. For glossy bunny insertion, our results are only slightly worse than Li et al. \cite{li2020inverse} but better than other works. }
+\label{tab:userStudy}
+\end{table}
+
+
+
+
+\subsection{Singe image indoor lighting prediction}
+
+\paragraph{Synthetic data} Quantitative and qualitative results of single view lighting prediction on our synthetic dataset are summarized in Figure \ref{fig:singleSyn} and Table \ref{tab:synSingle}. From Figure \ref{fig:singleSyn}, we observe that our method can recover the details of the reflection from visible surfaces as well as the HDR light sources, either visible or invisible. As for the invisible reflection of the scene, our method cannot recover the details but can infer correct color distribution and also maintain a smooth, natural transition between visible and invisible regions. Using our lighting prediction, we can render both mirror and glossy spheres into the scene with appearance closely matching the ground truths.  From Table \ref{tab:synSingle}, we observe that our hybrid framework with the blending network can produce much more accurate lighting prediction, as also shown in the real examples in Figure \ref{fig:blending}. In addition, we observe that our SGLV representation has lower rendering loss of glossy sphere compared to vanilla RGB$\alpha$ volume. This implies that our representation can better handle HDR lighting and directional lighting, which is also shown in the real example in Figure \ref{fig:SGvsRGB}. 
+
+\begin{figure}
+\centering
+\animategraphics[width=\columnwidth,poster=first]{2}{figures/spCons/frame}{00}{16}
+\caption{We demonstrate the spatial consistency of our lighting prediction by placing moving glossy and mirror spheres into two real scenes. Please click the figure to see the animation.}
+\label{fig:spCons}
+\end{figure}
+
+
+\paragraph{Real data}
+
+We compare our method with prior works on Garon et al. dataset \cite{garon2019fast}, which is widely used for evaluating indoor lighting. The dataset contains 20 images with lighting selected at different locations in the scenes. We use HDR environment maps predicted by different methods to render virtual mirror spheres and glossy bunnies into the scenes, to compare the level of photorealism of object insertion under different materials.  Qualitative results are summarized in Figure \ref{fig:singleInsertion}. We see that our method can recover both detailed reflection and HDR light sources accurately, generating realistic object insertion for both mirror and glossy materials, with high-quality reflection, specular highlights, and shadows. It models challenging visual effects effectively, such as global illumination, occlusion, and directional lighting. For example, in the bottom-right scene, the bunny under the table is much darker compared to the bunny on the table due to the occlusion of light sources; in the top-right scene, the bunny on the platform has realistic highlights and shadows caused by sunlight coming through the window. In contrast, a recent method \cite{wang2021learning} that uses a similar spherical Gaussian volume as its lighting representation fails to reconstruct realistic nearby reflection even though they use around 6.5 times more voxels compared to our hybrid representation, as shown in the mirror sphere insertion results. They also cannot recover HDR lighting as well as our method, probably because their dataset lacks the direct supervision from ground truth HDR environment maps. This causes their glossy object insertion results to be darker than ground truth, with blurry specular highlights and shadows. Prior state-of-the-art \cite{li2020inverse} cannot recover the detailed reflection, leading to poor-quality rendering for mirror spheres. It also cannot guarantee spatial consistency. Earlier methods cannot recover high-frequency HDR lighting \cite{garon2019fast} or spatially-varying lighting \cite{gardner2017indoor}.
+
+To evaluate the object insertion quality quantitatively, we conduct a user study on Amazon Turk. For mirror sphere insertion and glossy bunny insertion, we hire 200 Amazon Turkers respectively, present them with 20 pairs of object insertion results, with each pair generated by two randomly selected methods, and ask them which one looks more realistic. We report the percentage of people thinking our results are more realistic in Table \ref{tab:userStudy}. The quantitative numbers match our observation in Figure \ref{fig:singleInsertion}, which shows that our method outperforms all prior state-of-the-art in mirror sphere insertion, including the most recent volume-based lighting estimation method \cite{wang2021learning}, and is only slightly worse compared to \cite{li2020inverse} in glossy bunny insertion. However, our lighting estimation framework is more general compared to \cite{li2020inverse}, which can only predict environment map at the surface with no guarantee of spatial consistency while we can predict spatially-consistent lighting at arbitrary locations. 
+
+In Figure \ref{fig:spCons}, we demonstrate the spatial consistency of our lighting estimation by moving virtual glossy and mirror spheres inside the scene. The animation shows that the reflection, specular highlights and shadows of the spheres are all consistent as we change their locations. 
+
+
+\begin{figure}
+\centering
+\animategraphics[width=\columnwidth,poster=first]{2}{figures/videoSyn/frame}{00}{10}
+\caption{Video lighting prediction on our synthetic dataset. Our method can progressively add visible details while making the predicted light source temporally consistent. Our rendered glossy and mirror spheres are close to the ground truths. In contrast, Lighthouse \cite{srinivasan2020lighthouse} cannot recover invisible light sources or achieve temporal consistency. Even with predicted depth, our method can still produce higher quality, temporally consistent lighting prediction with only slight blur and distortion. Please click the figure to see the animation. }
+\label{fig:videoSyn}
+\end{figure}
+
+\begin{figure*}
+\centering
+\animategraphics[width=\textwidth,poster=first]{2}{figures/videoReal/frame}{00}{10}
+\caption{Comparisons of video lighting prediction and object insertion on real data captured by an iPad. Our method significantly outperforms prior state-of-the-art \cite{srinivasan2020lighthouse} to predict more temporally consistent lighting, more accurate HDR light sources and reflection, which allows more realistic shadows and specular highlight in object insertion with different materials. Please click the figure to see the animation. }
+\label{fig:videoReal}
+\end{figure*}
+
+\begin{figure*}
+\centering
+\animategraphics[width=\textwidth,poster=first]{2}{figures/videoReal2/frame}{00}{10}
+\caption{Another video lighting prediction example. Our method memorizes the visible lamp that only appears in the first few frames, leading to consistent specular highlights and shadows across the whole video sequence. Please click the figure to see the animation. }
+\label{fig:videoReal2}
+\end{figure*}
+
+
+\begin{table}[t]
+\centering
+\renewcommand{\tabcolsep}{0.12cm}
+\small
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Frame interval}  & [1,8) & [8,14) & [14,20) & [20,26) & [26,31] \\
+\hline
+\multirow{4}{*}{HDR env} & Gt. depth & 0.63 & 0.61 & 0.60 & 0.59 & \textbf{0.59} \\ 
+\cline{2-7}
+ & Pred. depth & 0.85 & 0.80 & 0.78 & 0.77 & \textbf{0.77} \\
+\cline{2-7}
+& No RNN & \textbf{0.93} & 1.15 & 1.14 & 1.15 & 1.19\\ 
+\cline{2-7} 
+& Simple Avg. & \textbf{0.71} & 0.75 & 0.79 & 0.81 & 0.84 \\
+\cline{2-7}
+$\log$ $L_2$ ($10^{-1}$) & Lighthouse & \textbf{1.39} & 1.42 & 1.42 & 1.41 & 1.42 \\ 
+\hline
+\multicolumn{2}{|c|}{Frame interval}  & [1,8) & [8,14) & [14,20) & [20,26) & [26,31] \\
+\hline
+\multirow{4}{*}{LDR env} & Gt. depth & 2.5 & 2.4 & 2.3 & 2.3 & \textbf{2.2} \\ 
+\cline{2-7}
+ & Pred. depth & 3.8 & 3.5 & 3.4 & 3.3 & \textbf{3.3} \\
+\cline{2-7}
+& No RNN & \textbf{4.4} & 6.1 & 6.0 & 6.2 & 6.6 \\ 
+\cline{2-7} 
+& Simple Avg. & \textbf{3.2}  & 3.5 & 3.8 & 4.0 & 4.2 \\
+\cline{2-7}
+ $L_2$ ($10^{-2}$) & Lighthouse & \textbf{6.7} & 6.9 & 7.0 & 7.0 & 7.0 \\ 
+\hline
+\multicolumn{2}{|c|}{Frame interval}  & [1,8) & [8,14) & [14,20) & [20,26) & [26,30] \\
+\hline
+\multirow{4}{*}{Smoothness} & Gt. depth & 1.38 & 0.74 & 0.58 & 0.52 & \textbf{0.49} \\ 
+\cline{2-7}
+ & Pred. depth & 2.12 & 0.86 & 0.68 & 0.61 & \textbf{0.56} \\
+\cline{2-7}
+& No RNN & 12.1 & 6.3 & 6.1 & 6.0 & \textbf{6.0} \\ 
+\cline{2-7} 
+& Simple Avg. & 0.76 & 0.41 & 0.35 & 0.34 & \textbf{0.33} \\
+\cline{2-7}
+ $\log$ $L_2$ ($10^{-3}$) & Lighthouse & 3.85 & 2.38 & 2.27 & 2.19 & \textbf{2.16} \\ 
+\hline
+\end{tabular}
+\caption{Quantitative comparisons of video lighting prediction on our synthetic dataset. We divide our 31-frame video sequences equally into five intervals and report the errors of each interval. The interval with the lowest error is marked with bold font. All three metrics show that with both ground truth and predicted depth maps as inputs, our method can consistently improve lighting prediction accuracy as it sees larger parts of scenes. On the contrary, prior state-of-the-art \cite{srinivasan2020lighthouse} predicts less accurate LDR environment maps in the first few frames and cannot improve the prediction accuracy with more inputs. }
+\label{tab:synVideo}
+\end{table}
+
+
+\subsection{Temporally consistent indoor lighting prediction}
+
+\paragraph{Synthetic data} Figure \ref{fig:videoSyn} shows qualitative results of video lighting prediction on our synthetic dataset. Our method manages to produce high-quality HDR environment map prediction, which enables realistic rendering of mirror and glossy spheres similar to the ground truths. In comparison to single view lighting prediction, our video lighting prediction includes much more details as our input frames cover a larger region of the room. As shown by the animation in Figure \ref{fig:videoSyn}, our method manages to maintain reasonable temporal consistency as it refines the lighting prediction with new inputs. In the first example, our method memorizes both the invisible lamp on the top and the window which cannot be seen in the last few frames, through the whole video. In the second example, our method keeps the location of the invisible lamp unchanged and makes it sharper as it looks around the room. We also show our video lighting prediction with predicted depth in the second example, which presents more blurry HDR light sources and slightly distorted details but still has smooth inter-frame transition even though the depth inputs from different frames may not be accurate or consistent. On the contrary, prior state-of-the-art methods' lighting prediction changes drastically as we move the camera. Besides, it cannot recover invisible light sources, which is very important for lighting estimation. 
+
+Our quantitative comparisons are summarized in Table \ref{tab:synVideo}. We compare our method with prior volume-based lighting prediction method Lighthouse \cite{srinivasan2020lighthouse} and two baselines. In the first baseline "No RNN", we remove the 2D and 3D GRU network modules and predict lighting independently from each input frame. In the second baseline "Simple Avg.", we simply accumulate our independent lighting prediction by computing their average. We report three errors, the $\log$ $L_2$ HDR environment map error $\mathcal{L}_{L_2}$ and smoothness error $\mathcal{L}_{sm}$ are used to train our network. To make a fair comparison with prior work \cite{srinivasan2020lighthouse} that can only predict LDR environment maps, we also report LDR environment map loss in the second group where we clamp the lighting prediction to the range of 0 to 1 and then compute its $L_2$ error from the ground truth. The quantitative comparisons show that our method can consistently reduce the lighting prediction errors with new input frames, even with imperfect predicted depth maps. On the contrary, the prior volume-based method predicts less accurate lighting as the camera drifts away. In all three metrics, our method with ground truth or predicted depths outperforms prior work by a large margin. Two simple baselines cannot progressively improve lighting predictions with new input frames either, which further demonstrates the effectiveness of our RNN modules.
+
+
+\paragraph{Real data} Figure \ref{fig:videoReal} and Figure \ref{fig:videoReal2} show three examples of our video lighting prediction on real data captured with an iPad. We sample 10 frames of prediction and include the full video sequence in the supplementary material. The depth maps and camera poses are obtained from ARKit. We observe that even though our method is trained on synthetic videos only, it generalizes well to real videos, as it can still progressively improve the lighting prediction quality by adding more details to the reflection from visible surfaces as well as refining the HDR light sources and reflection from invisible surfaces. 
+
+More specifically, in the first example in \ref{fig:videoReal}, our method refines the lighting prediction as a light source that is invisible in the first few frames and, therefore, not correctly predicted, gradually emerges in later frames. Our method successfully adds the new light sources as it shows up. Meanwhile, the other invisible light source, which has been predicted correctly in the beginning, remains stable across the video sequence. In the third example, our method predicts two invisible light sources (a lamp on the top and a window on the left) accurately from the first few frames and keeps refining them as more inputs are available. Through this process, the shadows and highlights on both the mirror spheres and the "knight" are reasonably stable. In Figure \ref{fig:videoReal2}, our method "memorizes" the visible light source that only appears in the first half of the video. As a result, the shadows and highlights are consistent across the whole video sequence. Note that even though the depth maps from ARKit may flicker slightly, as shown in Figure \ref{fig:rnn}, our blending model is robust to such small errors and generates stable details across all three video sequences. 
+
+In contrast, prior work Lighthouse \cite{srinivasan2020lighthouse} cannot predict temporally consistent lighting. More importantly, it cannot utilize later frames to refine its predictions. Therefore, as the camera drifts away, their predictions become worse. In addition, even for the first few frames, we observe that Lighthouse can only recover the reflection of visible surfaces. For invisible surfaces, it cannot predict either light sources or a correct color distribution that allows a smooth transition between visible and invisible reflection. On the contrary, our lighting prediction is much more natural and realistic on real data, mainly because our dataset (physically-based rendered OpenRooms dataset), network architecture and loss functions (rendering loss) are all physically motivated, causing our learning-based framework to have better generalization ability.  

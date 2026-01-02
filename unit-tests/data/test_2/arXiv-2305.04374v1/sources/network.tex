@@ -1,0 +1,257 @@
+\section{Physically Motivated Network Design}
+\label{sec:network}
+
+\begin{figure*}
+\includegraphics[width=\linewidth]{figures/network.pdf}
+\caption{Summary of our physically-motivated deep network architecture for indoor lighting estimation from a single image or a video sequence. $Ca$-$Kb$-$Sc$-$Pe$ means a convolution layer with channel $a$, kerneal size $b$, stride $c$ and padding $e$. The RNN modules added for handling video sequences are surrounded by black dashed lines. Specifically, our encoder-decoder architectures have only two skip-connections, which allows us to preserve high-frequency signals but also reduce memory consumption, especially for video inputs. }
+\label{fig:network}
+\end{figure*}
+
+We now present our physically motivated deep learning based framework for spatially and temporally consistent high-quality HDR indoor lighting estimation at arbitrary locations. The overall architecture is summarized in Figure \ref{fig:network}. We first introduce our light-weight 3D CNN for single image SGLV prediction, followed by a 2D blending CNN to improve the details. Next, we extend our frameworks with RNN architectures so that we can handle video sequences with temporal consistency. At the end of this section, we discuss the dataset creation process and important implementation details. 
+
+\subsection{Single image indoor lighting prediction}
+\paragraph{3D volume initialization.} We first build an initial 3D RGB$\alpha$ volume as the input to our 3D CNN for volume completion, by projecting the input image $C$ into 3D space based on depth map $D$, which can either be predicted by a deep network or captured by a sensor. We initialize the $\alpha$ value first. Let $\mathbf{v}$ be the center of a voxel, $v$ be the voxel's side length, $\text{proj}(\cdot)$ be the projection function projecting to the image plane, $\mathbf{o}$ be the center of the image plane and $\mathbf{\hat{z}}$ be its orientation. We define $D_{\mathbf{p}}$ to be the depth value of $\mathbf{p}$ on the image plane, computed through bilinear interpolation. The initial $\alpha$ is computed as
+\begin{eqnarray*}
+\alpha_{\mathbf{v}} &=& \left\{
+\begin{array}{cc}
+4(\frac{1}{v}( (\mathbf{v-o})\cdot\mathbf{\hat{z}} - D_{\text{proj}(\mathbf{v})} ) + 1)    &  D_{\text{proj}(\mathbf{v})} > (\mathbf{v-o})\cdot\mathbf{\hat{z}} \\[8pt]
+4(\frac{1}{v}(D_{\text{proj}(\mathbf{v})} - (\mathbf{v-o})\cdot\mathbf{\hat{z}}) + 5)    &  D_{\text{proj}(\mathbf{v})} \leq (\mathbf{v-o})\cdot\mathbf{\hat{z}}
+\end{array}
+\right. \\[8pt]
+\alpha_{\mathbf{v}} &=& \text{clip}(\alpha_\mathbf{v}, 0, 1)
+\end{eqnarray*}
+Intuitively, we smooth the $\alpha$ value in front of and behind the scene surface unevenly so that the rendered HDR environment map can have sharp edges but without holes. For voxels that are behind the camera or outside the camera frustum, we set their initial $\alpha$ to be 0. 
+
+Given the value of $\alpha$, the initial color value $\mathbf{c}$ is computed as 
+\begin{equation*}
+\mathbf{c}_{\mathbf{v}} = \alpha_{\mathbf{v}}C_{\text{proj}(\mathbf{v})},
+\end{equation*}
+where $C_{\text{proj}(\mathbf{v})}$ is similarly computed through bilinear interpolation. However, this initial RGB$\alpha$ volume does not yet encode all the information from the depth map. Namely, the space inside the camera frustum, between the camera and the scene surface, should be empty. To incorporate this information, we augment the initial volume with another channel $e$. We set $e_\mathbf{v}$ to be $-1$ if $\mathbf{v}$ should be empty according to the depth map $D$:
+\begin{equation*}
+e_{\mathbf{v}} = \left\{
+\begin{array}{cl}
+-1    & \frac{1}{v}(D_{\text{proj}(\mathbf{v})} - (\mathbf{v-o})\cdot\mathbf{\hat{z}}) > 3  \\[8pt]
+0     & \text{otherwise}.
+\end{array}
+\right.
+\end{equation*}
+As shown above, we only set $e_\mathbf{v}$ to be -1 if $\mathbf{v}$ is three voxels away from the scene surface, in case the depth map $D$ is inaccurate.
+
+
+
+\paragraph{3D encoder-decoder for SGLV reconstruction} We train a relatively light-weight 3D encoder-decoder to reconstruct SGLV from the initial RGB$e\alpha$ volume. Formally, let $\tilde{V}$ represent the initial volumes and $V$ represent predicted volumes. Our 3D CNN encoder-decoder can be written as
+\begin{eqnarray*}
+V_{f_0}, V_{f_1} &=& \mathbf{SGEncoder}(\tilde{V}_{\mathbf{c}}, \tilde{V}_{\alpha}, \tilde{V}_{e} ) \\
+V_{\mathbf{c}}, V_{\alpha}, V_{\mathbf{w}}, V_{\lambda}, V_{\hat{\mathbf{s}}} &=& \mathbf{SGDecoder}(V_{f_0}, V_{f_1})
+\end{eqnarray*}
+where $V_{f_0}$ and $V_{f_1}$ are two feature volumes connecting encoder and decoder, as shown in Figure \ref{fig:network}.  
+
+It is important to ensure that the predicted volumes are consistent with the input depth map, i.e. the voxels inside the camera frustum in front of scene surfaces should always be empty. Otherwise, the lighting prediction near the surface can be wrong due to the occlusion of nearby voxels. Therefore, we explicitly add a constrain to clear these near-surface voxels.
+\begin{equation}
+V_{\mathbf{x}} = V_{\mathbf{x}} (1 + \tilde{V}_{e}), \quad \mathbf{x} \in \{\mathbf{c}, \alpha, \mathbf{w}, \lambda, \mathbf{\hat{s}}\}
+\end{equation}
+
+Unlike Lighthouse \cite{srinivasan2020lighthouse}, which uses a heavyweight multi-scale network that requires 16G GPU memory for training, we make our 3D CNN network much more light-weight so that it can be trained on a 1080Ti GPU. Three design choices are specifically made. First, we set the number of voxels to be only one fourth of that of Lighthouse, as detailed in Section \ref{sec:details}. While this will cause more blurry predictions, we solve it by introducing a cheap 2D blending module, which will be discussed later. Further, as shown in Figure \ref{fig:network}, we keep only two connections $V_{f_0}$ and $V_{f_1}$ for our encoder-decoder architecture, which connect only the first and the last layers from the encoder to the decoder. For single image inputs, this not only allows us to keep reasonable details but also can reduce the GPU memory consumption by 30\% compared to a standard U-net. For video inputs, we have only two levels of features to be updated by RNNs, which greatly reduces the computational cost for both training and testing. Finally, as shown in Figure \ref{fig:network}, in our 3D decoder, the branches to output the spherical Gaussian volumes $V_{\mathbf{w}}$,  $V_{\hat{\mathbf{s}}}$, $V_{\lambda}$ and the weight volume $V_{m}$ share features with the branches to output $V_{\mathbf{c}}$ and $V_{\alpha}$. Therefore, the computational overhead to have the extra outputs is very small compared to that of RGB$\alpha$ volume.
+
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{figures/blending.png}
+\caption{Comparison of lighting prediction with and without the blending module on mirror sphere insertion. Our blending module adds significantly amount of details to render photorealistic reflection, while keeping the computational overhead significantly lower than prior methods \cite{srinivasan2020lighthouse, wang2021learning}. }
+\label{fig:blending}
+\end{figure*}
+
+\paragraph{Blending network for detailed environment maps} A high-resolution detailed environment map is necessary to render photorealistic reflection when we insert a highly glossy object into the scene. However, to directly generate such an environment map through volume ray tracing, we need to either reconstruct a high-resolution volume \cite{wang2021learning} or a multi-scale volume \cite{srinivasan2020lighthouse} by allocating denser voxels in the camera frustum, where the virtual object will be inserted. Both still lead to high computational cost. On the contrary, we solve this issue in a simple but effective hybrid manner. Given the depth map $D$, we build a partial mesh of the indoor scene by first projecting pixels into 3D space and then connecting adjacent pixels. We then texture the partial mesh with the input image and render a detailed LDR partial environment map efficiently with a ray tracer. This detailed LDR partial environment map complements the predicted HDR environment map but directly blending them together can cause the loss of HDR lighting and edge artifacts. Therefore, we train a light-weight 2D blending network that can output a blending weight. Formally, let $\dot{L}$ be the HDR complete environment map rendered from SGLV. With some abuse of notation, let $\tilde{L}$ be the detailed LDR partial environment maps and $\tilde{L}_{M}$ be the binary mask indicating the visible regions, both rendered from the partial mesh. Our blending network is defined as
+\begin{eqnarray*}
+F_{0}, F_{1} &=& \mathbf{BlendEncoder}(\dot{L}, \tilde{L}, \tilde{L}_{M}, 1-\tilde{L}_{M}) \\
+L_M &=& \mathbf{BlendDecoder}(F_0, F_1) \\
+L &=& \dot{L}(1-L_M) + \tilde{L} L_M
+\end{eqnarray*}
+where $F_0$ and $F_1$ are two 2D feature maps connecting encoder and decoder. $L_M$ is a single channel blending weight in the range [0, 1]. Similar to our 3D encoder-decoder, our 2D blending encoder-decoder also only keeps 2 connections to reduce the computational cost, especially when the input is a video sequence. Figure \ref{fig:blending} compares the environment map predictions directly rendered from SGLV and from our blending network, which clearly shows the improved details and more realistic reflection when using it to render mirror sphere. While our blending model can only recover details of visible surfaces of the scene, we argue that hallucinating details of invisible surfaces is a too challenging problem as prior methods using larger volume trained with adversarial loss cannot handle this issue satisfactorily either. Figure \ref{fig:videoSyn} and \ref{fig:videoReal} further compare our lighting prediction with \cite{srinivasan2020lighthouse}. We observe that on both synthetic and real data, our method achieves higher or similar level of details for visible parts of the scenes but with much less cost. For invisible parts, our method can better recover the overall color of reflection and most importantly the HDR light sources, leading to much more realistic object insertion results with both mirror and glossy materials. 
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/renderLayer.pdf}
+\caption{Comparisons between rendering layers that uniformly samples the $\theta$-$\phi$ space and that does importance sampling according to the microfacet BRDF. From left to right: the cbox scene with a inserted glossy sphere, the inserted glossy sphere rendered by a rendering layer using uniform sampling, as in \cite{li2020inverse}, and importance sampling.}
+\label{fig:renderingLayer}
+\end{figure}
+
+\paragraph{Monte Carlo in-network rendering layer.}
+Since our eventual goal is to build high-quality AR applications such as virtual object insertion, we introduce a Monte Carlo in-network rendering layer to directly optimize the network for this purpose. Our rendering layer takes an HDR environment map and renders a virtual glossy sphere facing the camera. The reason we render a glossy sphere instead of a diffuse one is that the former can reflect specular highlights, providing a good cue for the network to recover the high-frequency directional lighting. In practice, we use the microfacet BRDF model proposed in \cite{brdfModel}, with its diffuse albedo set to be $(0.8, 0.8, 0.8)$ and roughness to be 0.2. During training, we render two spheres using predicted and ground truth lighting and compare the two spheres to compute a rendering loss, as shown in Eq. \eqref{eq:renderinLoss}. 
+
+A similar rendering layer has also been used in the prior work \cite{li2020inverse} for indoor lighting estimation. However, their rendering layer integrates the incoming radiance by uniformly sampling the $\theta$-$\phi$ space, which is not optimal and can cause aliasing artifacts. On the contrary, our rendering layer samples the hemisphere through importance sampling according to the microfacet BRDF model, which leads to  less noise and more realistic specular highlights. Let $R$ be the rendered image, $\Omega$ be the set of directions sampled according to the microfacet BRDF and $P(\cdot)$ be the sampling probability. We have
+\begin{equation*}
+R_{\mathbf{p}} = \sum_{\mathbf{\hat{\mathbf{l}}}\in \Omega_{\mathbf{p}}} \frac{\text{F}(\mathbf{\hat{l}}, \mathbf{\hat{n}_p}, \mathbf{\hat{v}_p}) L_{\hat{\mathbf{l}}}}{\text{P}_{\mathbf{p}}(\mathbf{\hat{l}} ) },
+\end{equation*}
+where $\text{F}(\cdot)$ is the microfacet BRDF. $\hat{\mathbf{n}}_{\mathbf{p}}$ and $\hat{\mathbf{v}}_{\mathbf{p}}$  are the normal and view direction for pixel $\mathbf{p}$. Figure \ref{fig:renderingLayer} compares the rendered images using the two sampling strategies on the Cornell box scene. With the same number of samples, uniform sampling results in aliasing artifacts, while our importance sampling can render smooth appearance.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/renderLayerObj.pdf}
+\caption{Comparison of indoor lighting estimation with and without rendering loss on a real example. Rendering loss encourages the network to better recover HDR light sources.}
+\label{fig:renderingLayerObj}
+\end{figure}
+
+\paragraph{Loss functions.} We use two loss functions for single view indoor lighting estimation: a per-pixel lighting loss and a rendering loss. The per-pixel lighting loss is defined as the $\log$ $L_2$ loss between our predicted HDR environment maps and the ground truth, located at three randomly sampled positions inside the camera frustum.
+\begin{equation}
+\mathcal{L}_{L_2} = \sum_{\{L, \bar{L}\}}\Big(\log(L + 1) - \log(\bar{L} + 1) \Big)^2,
+\label{eq:logl2}
+\end{equation}
+where $\bar{L}$ is a ground truth HDR environment map. As for the rendering loss, we clamp the images $R$ rendered with our lighting prediction and the ground truth to the range $[0, 1]$, then compute their $L_2$ distance:
+\begin{equation}
+\mathcal{L}_{R} = \sum_{\{R, \bar{R}\}}\Big(\min(R, 1) - \min(\bar{R}, 1)\Big)^2,
+\label{eq:renderinLoss}
+\end{equation}
+where $\bar{R}$ is glossy sphere rendered with a ground truth HDR environment map. The reason for clamping is that in practice, most devices only have LDR displays. Therefore, over-penalizing the HDR pixels may not improve AR applications but can cause unstable training. Note that regardless of the clamping, the lighting we recover is HDR. The final loss function is a linear combination of the 2 loss functions. 
+\begin{equation}
+\mathcal{L}_{\text{single} } =  \mathcal{L}_{L_2} + \epsilon_{R} \mathcal{L}_{R},
+\end{equation}
+where $\epsilon_{R}$ is set to be 0.3 in our experiments. Note that we do not use adversarial loss to hallucinate the details of the unseen parts of the scene. We find that the hallucinated details may not create more realistic reflection in virtual object insertion and may cause temporally inconsistent lighting prediction, as shown in experiments. 
+
+
+\begin{figure}
+\centering
+\animategraphics[width=\columnwidth,poster=first]{2}{figures/depth/frame}{00}{10}
+\caption{Comparison of blending models with and without depth panorama input $\{L_{D}^{i}\}$. Without depth input, the blending network cannot infer that the nearby white table and sofa is closer to the mirror sphere and therefore will occlude the surfaces further away seen in the later frames. Please click the figure to see the animation. }
+\label{fig:depth}
+\end{figure}
+
+\begin{figure*}
+\centering
+\animategraphics[width=\textwidth,poster=first]{2}{figures/RNN/frame}{00}{12}
+\caption{Comparison between our single-view lighting prediction from each individual frame and our RNN-based video lighting prediction. We observe that our RNN-based framework can effectively accumulate observation from multiple frames to predict HDR environment maps with more detailed reflection and more high-frequency lighting, while keeping the transition smooth. Note that even though the input depth maps are not fully temporal consistent, as shown in the detailed reflection in our single-view prediction, our framework still generates temporally consistent lighting prediction. Please click the figure to see the animation. }
+\label{fig:rnn}
+\end{figure*}
+
+
+
+
+\subsection{Temporally consistent indoor lighting prediction}
+We now extend our network to utilize video inputs for improved lighting prediction while maintaining temporal consistency. More specifically, our lighting prediction must be stable to avoid obvious flickering artifacts across frames, but as the camera motion accumulates, our network should gradually improve the lighting prediction quality based on new input frames. Intuitively, lighting prediction may be improved using new input frames in two aspects. First, as new inputs cover a larger region, the network can recover more details for this region, which can help render more realistic reflections on mirror or highly glossy surfaces. Second, even for a region that has never been seen, more inputs may still allow the network to reason about the invisible part of the scene using global illumination effects, including shadows, highlights, and color bleeding, which may benefit the reconstruction of important invisible light sources. 
+
+\paragraph{3D RNN for temporally consistent SGLV reconstruction} A na\"{i}ve method to handle the video sequence would be to fuse the initial volumes and send them to the 3D encoder-decoder network. However, this method offers no explicit smoothness constraint and may suffer from inconsistent depth prediction across different views, causing blurry or flickering lighting prediction. Hence, we train RNNs to update our lighting prediction. Since our 3D encoder-decoder has only two skip connections, we only use two 3D gated recurrent unit (GRU) networks \cite{cho2014learning} $\mathbf{SGGRU}_0$ and $\mathbf{SGGRU}_1$. Similar network architectures are used to update 3D feature volumes in \cite{choy20163D2N2} for 3D reconstruction and \cite{sitzmann2019deepvoxels} for view synthesis. Let $V^i$ represent the volumes for frame $i$, we will have
+\begin{eqnarray}
+V_{f_0}^{i}, V_{f_1}^{i} &=& \mathbf{SGEncoder}(\tilde{V}^{i}_{\mathbf{c}}, \tilde{V}^{i}_{\alpha}, \tilde{V}^{i}_{e} ) \label{eq:3dRNN}\\
+V_{h_0}^{i} &=& \mathbf{SGGRU}_0(V_{h_0}^{i-1}, V_{f_0}^{i}) \\
+V_{h_1}^{i} &=& \mathbf{SGGRU}_1(V_{h_1}^{i-1}, V_{f_1}^{i})
+\end{eqnarray}
+where $V_{h_0}$ and $V_{h_1}$ are hidden states for $\mathbf{SGGRU}_0$ and $\mathbf{SGGRU}_1$, which are sent to the decoder. 
+\begin{equation}
+V_{\mathbf{c}}^i, V_{\alpha}^i, V_{\mathbf{w}}^i, V_{\lambda}^i, V_{\hat{\mathbf{s}}}^i, V_{u}^i = \mathbf{SGDecoder}(V_{h_0}^{i}, V_{h_1}^{i}) \label{eq:3dMerge}
+\end{equation}
+where $V_u$ is a single channel update volume to merge the prediction from the current frame with the prediction from the prior frame. Our final SGLV prediction for frame $i$ is computed as
+\begin{eqnarray}
+V_{\mathbf{x}}^{i} &=& V_{\mathbf{x}}^i (1 - V_{u}^i) + V_{u}^i V_{\mathbf{x}}^{i-1} \\
+\mathbf{x} &\in& \{\mathbf{c}, \alpha, \mathbf{w}, \mathbf{\hat{s}}, \lambda\},
+\end{eqnarray}
+For the first frame with $i=0$, we directly use the 3D encoder-decoder trained for single image lighting prediction to reconstruct SGLV and the intermediate feature volumes $V_{f_0}^{0}$ and $V_{f_1}^{0}$. 
+
+\paragraph{2D RNN for depth-aware blending} Similarly, to train the blending network to handle video inputs, we use two 2D GRU networks $\mathbf{BlendGRU}_0$ and $\mathbf{BlendGRU}_1$ to update the intermediate feature maps $F^{i}_{0}$ and $F^{i}_{1}$. However, in contrast to our single view blending network, our video blending network has to be depth-ware to reason about occlusion. Figure \ref{fig:depth} shows an example where the white table and the right sofa are close to the inserted mirror sphere but are not seen in later frames. The blending module, therefore, needs to "memorize" the occlusion without updating the detailed reflection from surfaces that are further away, which is only possible when provided with depth information. 
+
+To make our 2D RNN blending network depth-aware, we further render a partial depth panorama $\tilde{L}_{D}^{i}$ using the partial mesh created from the depth map $D^{i}$. In addition, we introduce $\hat{L}_{D}^{i-1}$, which we define as the accumulated partial depth panorama from frames 0 to $i-1$ as shown in \eqref{eq:depthAccu}. By comparing the two partial depth panoramas $\tilde{L}_{D}^{i}$ and $\hat{L}_{D}^{i-1}$, we hope the blending network can learn to figure out the occlusion order of different regions. The encoder of our video blending network is defined as
+\begin{equation}
+F_0^i, F_1^i = \mathbf{BlendEncoder}(L^{i-1}, \dot{L}^{i}, \tilde{L}^{i}, \tilde{L}_{M}^{i}, 1 - \tilde{L}_{M}^{i}, \tilde{L}_{D}^{i}, \hat{L}_{D}^{i-1} )
+\end{equation}
+where $L^{i-1}$ is the blended final HDR environment map predicted from the last frame and $\tilde{L}_{M}^{i}$ is the binary mask indicating visible regions for frame $i$. The output feature maps $F_0$ and $F_1$ are then updated by two 2D GRU networks, as shown below.
+\begin{eqnarray*}
+H_{0}^{i} &=& \mathbf{BlendGRU}_0(H_{0}^{i-1}, F_{0}^{i}) \\
+H_{1}^{i} &=& \mathbf{BlendGRU}_1(H_{1}^{i-1}, F_{1}^{i}) 
+\end{eqnarray*}
+The updated $H_0$ and $H_1$ are sent to the decoder to predict the blending weight $L_{M}^{i}$, 
+\begin{equation}
+L^{i}_{M} = \mathbf{BlendDecoder}(H_{0}^{i}, H_{1}^{i} ),
+\end{equation}
+which is used to blend the detailed partial environment map $\tilde{L}^{i}$ into our final HDR environment map prediction $L^{i}$ as shown in \eqref{eq:videoBlend}. To make our blending model robust to slight depth flickering, we adopt a conservative strategy by keeping the observed detailed reflection unchanged unless the newly visible surfaces is significantly closer to the camera, causing new occlusion. 
+\begin{equation}
+L^{i}_{M} = \max(L^{i}_{M} - \mathbf{1}(\hat{L}_{D}^{i-1} - \tilde{L}_{D}^{i} < 0.25), 0) 
+\end{equation}
+where $\mathbf{1}(\cdot)$ is an indicating function. 
+
+Further, since the blending network is lightweight, we only use it to update the visible regions of the environment map, which is a relatively easier task. For the invisible regions, we directly use the $\dot{L}^{i}$ rendered from SGLV as the final prediction. To memorize the regions that have been seen in the past frames, we introduce the accumulated blending weight $\hat{L}_{M}^{i-1}$, which is the summation of blending weight from frame 0 to $i-1$ as shown in \eqref{eq:maskAccu}. Our environment map updating process can be written as
+\begin{equation}
+L^{i} = L^{i}_{M} \tilde{L}^{i} + (1 - L^{i}_{M})\left((1 - \hat{L}_{M}^{i-1}) \dot{L}^{i} + \hat{L}_{M}^{i-1}L^{i-1}  \right) \label{eq:videoBlend}
+\end{equation}
+Finally, we update the accumulated partial depth panorama $\hat{L}_{D}^{i}$ and the accumulated blending weight $\hat{L}_{M}^{i}$. 
+\begin{eqnarray}
+\hat{L}^{i}_{D} &=& L_{M}^{i} \tilde{L}^{i}_{D} + (1 - L_{M}^{i}) \hat{L}_{D}^{i-1} \label{eq:depthAccu}\\
+\hat{L}^{i}_{M} &=& \min(\hat{L}^{i-1}_{M} + L_{M}^{i}, 1) \label{eq:maskAccu}
+\end{eqnarray}
+
+An alternative way to accumulate details of visible surfaces is running multi-view stereo methods \cite{schoenberger2016mvs} to reconstruct a mesh from a video sequence. However, this process may take several minutes to reconstruct the mesh while our current simple blending method can run in real-time, as shown in Table \ref{tab:time}, which is more suitable for building a mobile AR application with limited computational resources.
+
+\paragraph{Loss functions.} To train our network for handling video inputs, we keep the per-pixel lighting loss $\mathcal{L}_{L_2}$ and the rendering loss $\mathcal{L}_{R}$ unchanged but add a new smoothness loss $\mathcal{L}_{sm}$ to enhance the temporal consistency. We define the smoothness loss to be the $\log$ $L_2$ distance between the predicted HDR environment maps from consecutive frames. 
+\begin{equation*}
+\mathcal{L}_{sm} = \sum_{\{L^{i}, L^{i-1}\}}\Big(\log(L^i + 1) - \log(L^{i-1} + 1) \Big)^2.
+\end{equation*}
+The final loss function is 
+\begin{equation*}
+\mathcal{L}_{video} =  \mathcal{L}_{L_2} + \epsilon_{R} \mathcal{L}_{R} + \epsilon_{sm} \mathcal{L}_{sm},
+\end{equation*}
+where $\epsilon_{R} = 0.3$ as before and $\epsilon_{sm}$ is set to be $0.01$.
+
+Figure \ref{fig:rnn} compares our single view lighting prediction framework and our RNN-based video lighting prediction framework. For both frameworks in this example, we use depth maps from ARKit as inputs. We notice that our RNN-based framework can effectively accumulate the newly observed details from later frames while maintaining temporal consistency. Even though the invisible light sources are never seen in the whole video sequence, our framework manages to predict sharper HDR light sources while keeping them at almost the same location, leading to steadily sharper and more realistic shadows. On the contrary, the single view framework predicts inconsistent lighting across different frames, causing the reflection and shadows of the inserted mirror sphere to jump across frames. In addition, we may see that the detailed reflection of our single view lighting prediction twists noticeably as we move our camera, which is caused by the flickering of ARKit depth prediction. On the contrary, our depth-aware RNN-based blending model is robust to such flickering and can create stable detailed reflection across the whole video sequence. 
+
+
+\subsection{Dataset creation and implementation details}
+\label{sec:details}
+
+\paragraph{Dataset creation.} To train our framework, we augment the OpenRooms dataset \cite{li2020openrooms}, which is a large-scale, high-quality synthetic indoor dataset, created with realistic materials and lighting, and rendered using an OptiX-based path tracer. The original OpenRooms dataset already contains spatially varying, per-pixel HDR environment maps densely sampled on the scene surface. However, those HDR environment maps are of a too low resolution ($16\times 32$) and none of them locates in the middle of the room. Therefore, we randomly sample 3 positions inside each camera frustum of 120K images and render an HDR environment with a resolution of $120\times 240$, leading to 360K much higher resolution environment maps in total. 
+
+To create video sequences, we follow the two-body method used in \cite{mccormac2017scenenet, li2018interiornet} to simulate smooth camera trajectories. We render $37,680$ video sequences in total, each of which contains 31 frames with a resolution of $240\times 320$. The average camera distance and the rotation angle between consecutive frames are $0.09$m and $4.78^{\circ}$, respectively. For each video sequence, we randomly sample 3 positions in the camera frustum of the first frame and render HDR environment maps at these positions as the ground truth supervision. 
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+     & Range & Resolution \\
+\hline
+x & [-1.1$D_{\max}$, 1.1$D_{\max}$] & 84 \\
+\hline
+y & [-0.8$D_{\max}$, 0.8$D_{\max}$] & 60  \\
+\hline
+z & [-1.2$D_{\max}$, 0.5$D_{\max}$] & 64 \\
+\hline
+\end{tabular}
+\caption{Volume range and resolution in $x$, $y$ and $z$ dimension. $D_{\max}$ is the maximum depth value in the first frame.}
+\label{tab:volumeSize}
+\end{table}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+& SGLV & Blending & Joint \\
+\hline
+Single View  & 7 & 2 & 2\\
+\hline
+Video & 3 & 3 & 2 \\  
+\hline
+\end{tabular}
+\caption{The number of training epochs for each step.}
+\label{tab:training}
+\end{table}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Volume & SGLV  & Volume & Blend- & 3D & 2D \\
+initialization & prediction & rendering & ing  & RNN & RNN \\
+\hline
+4.1 ms  & 25 ms & 22 ms & 5.2 ms & 19 ms & 2.1 ms \\
+\hline
+\end{tabular}
+\caption{Time consumption of every step of our framework. The total time to process one frame is around 77 ms.}
+\label{tab:time}
+\end{table}
+
+\paragraph{Volume configuration.} We decide the location and orientation of our volume based on the camera position, with the camera center being the original point, and the right, up, backward directions of the image plane being the $x$, $y$, $z$ axes. We decide the size and resolution of our volume based on the maximum depth value $D_{\max}$ in the depth map $D$, as summarized in Table \ref{tab:volumeSize}. We empirically find that this configuration allows us to cover most light sources in our volume. When the input is a video sequence, we build the volume based on the first frame and fix it through the entire video sequence. Our total number of voxels is only 25\% of Lighthouse \cite{srinivasan2020lighthouse} and 15\% of Wang et al. \cite{wang2021learning}, which makes our model much more memory efficient. 
+
+
+\paragraph{Training details} We use the Adam optimizer \cite{adam} with a learning rate of $10^{-4}$ and batch size 1 to train all our networks. We first train the networks for single view indoor lighting prediction and use the trained models as the initialization for handling video inputs. We find that this strategy allows us to significantly reduce the total training time. For both single view and video cases, we train the 3D encoder-decoder for SGLV reconstruction first, then fix it to train the blending network, and finally, jointly fine-tune the two networks together. The number of iterations for each step is summarized in Table \ref{tab:training}. 
+
+To test the model performances with imperfect depth inputs, we train two versions of our lighting prediction models, one with the ground truth depth maps and the other with predicted depth maps. For single view lighting prediction, we choose 3D-ken-burn by Niklaus et al. \cite{niklaus20193d} for depth prediction because of its good performances on indoor scene datasets \cite{silberman2012indoor}. For video lighting prediction, we choose Neural RGBD by Liu et al. \cite{liu2019neural} for depth prediction. We fine-tune both models on our synthetic dataset. Some more recent works demonstrate that the transformer architecture can achieve more accurate depth prediction \cite{luo2020consistent, zhang2021consistent}. Other works propose to predict temporally consistent depth maps by fine-tuning a pre-trained network for every video sequence. While these new methods may improve lighting prediction quality, it is not our focus to comprehensively explore all different depth prediction methods.
+
+\paragraph{Real data} For all real experiments on single image lighting prediction, we use depth prediction from Niklaus et al. \cite{niklaus20193d} to demonstrate that we can handle any legacy photos. For video lighting prediction, we use camera poses and depth maps directly obtained from iPad ARkit. While the depth maps from ARKit may not be completely temporally consistent, we observe that our method is robust to such imperfect depth inputs. We sample 30 frames from around 10 seconds video sequences as the input to our network. Once we get the lighting prediction of the 30 frames, we use simple bilinear interpolation to generate the lighting prediction for every frame in the whole video sequence and render our object insertion results. 
+
+
+\paragraph{Time consumption} We test the time consumption of our framework on an Nvidia 2080 Ti GPU. The results are summarized in Table \ref{tab:time}. We observe that the majority of time is spent on reconstructing SGLV and using volume ray tracing to render HDR environment maps. The total time consumption for one frame is around 77 ms, which means our method can run at 13 fps.  

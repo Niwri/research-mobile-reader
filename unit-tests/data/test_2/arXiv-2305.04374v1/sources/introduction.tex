@@ -1,0 +1,41 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\begin{figure*}
+\centering
+\animategraphics[width=\textwidth,poster=first]{2}{figures/pipeline/frame}{00}{12}
+\caption{Overview of our deep learning-based framework to predict spatiotemporally consistent lighting at arbitrary locations of indoor scenes. Our framework consists of two parts: a spherical Gaussian lighting volume reconstruction network that reconstructs visible and invisible light sources and reflection, and a blending network that adds the detailed reflection from visible surfaces. Both parts use RNNs to accumulate observations from different frames and progressively refine our predictions. (Please use Adobe Acrobat and click the figure to see the animation.)}
+\label{fig:pipeline}
+\end{figure*}
+
+The ubiquity of mobile devices for acquiring, sharing and editing videos suggests novel AR applications such as photorealistic scene enhancement and telepresence. High-quality consistent lighting estimation for a single image or across a video sequence is a crucial need for such applications. However, it remains a significant challenge, especially in indoor scenes where geometry, materials and light sources are diverse and produce images through complex, long-range interactions.
+
+On the one hand, images or videos captured by the camera on mobile phones or tablets are usually very sparse and incomplete. For example, in a typical mobile phone photo, only $6\%$ of the panoramic scene is captured by the camera~\cite{legendre2019deeplight}. As a result, the inputs for lighting estimation are just low dynamic range (LDR) images with a very limited field of view (FoV). Therefore, to generate highly accurate indoor lighting estimation, one must hallucinate important HDR information and invisible parts of the scenes.
+
+On the other hand, to allow photorealistic applications, the lighting prediction should satisfy several demands on quality. High-frequency directional lighting is essential for rendering high-quality shadows and specular highlights in scenarios such as bright sunlight through an open window. HDR lighting is necessary for rendering general non-mirror materials, while relatively high-resolution details need to be preserved for rendering realistic mirror reflections. Moreover, when rendering multiple (moving) objects, the predicted lighting should remain spatially consistent, which requires proper modeling of complex interactions between light sources, geometry, and materials. With a video sequence as input, it is advantageous to progressively improve the lighting prediction as more regions become visible while maintaining temporal consistency to avoid flickering. 
+
+While several recent works propose deep learning-based frameworks for indoor lighting, they do not satisfy all the above requirements. Some prior works only achieve photorealistic outputs under certain circumstances (e.g. non-mirror surface \cite{li2020inverse,garon2019fast}, mirror surface only \cite{srinivasan2020lighthouse}
+, diffuse lighting \cite{srinivasan2020lighthouse}, single object \cite{gardner2017indoor} etc.) or need extra non-trivial inputs (e.g. stereo image \cite{srinivasan2020lighthouse}). Further, none
+of the existing methods take a video as input to progressively improve lighting prediction while preserving spatiotemporal consistency.
+
+Motivated by the above, we propose a novel hybrid learning-based framework for consistent HDR indoor lighting prediction, taking either a single LDR image or video sequence as input. Our framework is designed to generate high-quality lighting prediction that enables various AR applications with photorealistic visual appearances. Table~\ref{tab:summary} compares recent lighting estimation methods, which shows that our method achieves all the desirable properties.
+
+We achieve the above distinctions through the novel design of both physically-based representations and deep networks. The whole pipeline is summarized in Figure \ref{fig:pipeline}. We first reconstruct a spherical Gaussian lighting volume (SGLV) representation that is specifically designed to model complex HDR indoor lighting (Figure \ref{fig:SGLV_Definition}). Compared to the RGB$\alpha$ volume representation \cite{srinivasan2020lighthouse}, our representation inherits the advantages of rendering spatially consistent lighting while better modeling high-frequency directional lighting, like sunlight shining through windows. However, volume representations have difficulties recovering details of reflection, which are essential to render realistic mirror surfaces. Prior works increase the volume resolution or using multi-scale volumes \cite{srinivasan2020lighthouse,wang2021learning}, which makes their framework memory intensive and not suitable for mobile applications. Instead, we adopt a hybrid method by proposing a blending network to enhance details for the visible regions of the HDR environment map, which is lightweight and achieves higher quality reflection compared to prior works. To boost HDR lighting prediction and photorealism for AR applications, we introduce a physically-based rendering loss through an in-network Monte Carlo rendering layer that renders a glossy sphere from the lighting predictions. Finally, to handle video inputs, RNNs are introduced to progressively refine the lighting prediction while maintaining temporal consistency, even when the input depth maps are not fully consistent. 
+
+Our framework is trained using the OpenRooms dataset \cite{li2020openrooms}, a large-scale, photorealistic synthetic indoor scene dataset with physics-based materials and lighting. The OpenRooms dataset contains over 120K HDR images with densely sampled spatially-varying per-pixel environment maps. We augment the dataset by rendering over 360K HDR environment maps at a much higher resolution of $120\times 240$ (compared to the original $16\times 32$), which enables us to render much more realistic reflection for mirror surfaces. To train our network for video inputs, we also render around 38K video sequences of $31$ frames each at a resolution of $240\times320$. Experiments on a widely-used real spatially-varying indoor lighting dataset show that our single image lighting estimation quality is comparable to the state-of-the-art \cite{li2020inverse}, while it can handle more complex materials with better spatial consistency. More importantly, to our best knowledge, our method is the first learning-based indoor lighting prediction framework that can enhance lighting prediction with video inputs and produce temporally consistent outputs. Figure \ref{fig:teaser} presents an animation of our spatiotemporally consistent HDR indoor lighting prediction, where we show 10 frames of our prediction from a video sequence. We include the full video in the supplementary to better demonstrate the quality of our lighting prediction. From the animation, we can see that our framework can recover both the detailed reflection and HDR invisible light sources, with spatial consistency as we insert mirror spheres at different locations. As we move our camera around, our method can progressively improve the prediction by adding more details and meanwhile, keep the transition smooth, as demonstrated in the reflection, highlights, and shadows of inserted objects. 
+
+
+In summary, our key contributions are:
+\begin{tight_itemize}
+\item A hybrid framework specifically designed for complex HDR indoor lighting, especially HDR light sources, directional lighting and detailed reflection.
+\item RNN-based modules that progressively refine lighting prediction with video inputs, while maintaining temporal consistency even with not fully consistent depth inputs. 
+\item State-of-the-art lighting prediction on real data, allowing photorealistic AR applications with fewer constraints.
+\end{tight_itemize}
+
+\begin{table}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/table.pdf}
+\caption{A summary of state-of-the-art learning-based lighting estimation methods for indoor scenes. Our method achieves all the desirable properties and is the only method that can utilize video inputs to progressively refine predicted lighting while maintaining temporal consistency. }
+\vspace{-0.6cm}
+\label{tab:summary}
+\end{table}

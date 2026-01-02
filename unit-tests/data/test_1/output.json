@@ -1,0 +1,1451 @@
+{
+    "documentclass": "revtex4-2",
+    "title": "Experimental Measurements of the Muon g - 2 and Searches for Charged Lepton Flavor Violation in the Muon Sector",
+    "authors": ["Sophie Middleton"],
+    "abstract": "**Contribution to the 25th International Workshop on Neutrinos from Accelerators**\\\\\\nSince its discovery, the muon has proven to be an invaluable probe of the Standard Model (SM). Muons are readily available in tertiary beams in facilities around the world. They do not decay hadronically and have a lifetime of a few µs; consequently, muon experiments offer clean, high-statistics environments to make precision measurements and search for new physics that could appear through deviations from the SM expectation. The 2020s have seen a renaissance in muon physics highlighted by the high-profile results from the Fermilab Muon $g - 2$ experiment which continues to provide successive measurements of the muon's anomalous magnetic moment with world-leading precision. In addition, a suite of experiments is coming online to search for new physics in the form of charged lepton flavor violation in the muon sector. These experiments will probe effective mass scales of new physics up to $10^4$ TeV/c$^2$, far beyond the reach of direct searches at colliders. This article explores the motivations, recent results, and status of these experiments.",
+    "sections": [
+        {
+            "heading": "The Muon",
+            "body": [
+                { 
+                    "text": "The muon was first observed in a laboratory in 1936 \\\\cite{anderson} and was eventually proven to be a unique particle, leading to the now infamous exclamation from Rabi: \\"who ordered that?.\\" This was a revolutionary discovery, the first evidence for generations of particles within the Standard Model (SM). Since this discovery, the muon has played a key role in helping us understand physics. Precision measurements of muon decay provide unparalleled insight into the SM. Studies of muon decay both determine the overall strength and establish the chiral structure of weak interactions. The muon's fundamental properties provide experimental advantages. Its mass is $\\\\sim$ 105 MeV/c$^{2}$ meaning that the muon does not decay hadronically; consequently, muon experiments provide very clean environments, with well-understood SM backgrounds. Muons can be created in large numbers as tertiary beams emanating from pion decay as a result of protons on fixed targets. Furthermore, the muon has a lifetime, at rest, of $\\\\sim$ 2.2 $\\\\mu$s, long enough that they can be transported and stored, accumulating high statistics in beams and projected on to targets, but short enough that the decay itself can be utilized. High-precision measurements of the muon's anomalous magnetic moment, $a_{\\\\mu}$, offer sensitivity to the completeness of the SM and beyond SM (BSM) theories that predict deviations from SM expectation. Muon charged lepton flavor violation (CLFV) channels probe a range of well-motivated new physics scenarios. Due to the high-intensity muon beams available at facilities such as PSI, Fermilab and J-PARC, current and projected constraints on muon CLFV channels are orders of magnitude beyond analogous constraints on tau channels. The next generation of muon CLFV experiments will probe effective masses to $10^{4}$ TeV/c$^2$ \\\\cite{bernstein_history}. The present decade is an unprecedented era for muon physics, with experiments at PSI, Fermilab, J-PARC and CERN all planning to take data to either enhance understanding of the muon's anomalous magnetic moment or search for new physics using high-intensity muon beams. This article explores the status of these current and upcoming experiments."
+                }
+            ]
+        },
+        {
+            "heading": "Measuring the Muon $g -2$",
+            "body": [
+                {
+                    "text": "The anomalous magnetic moment of the muon, $a_{\\\\mu}$, is defined as $a_{\\\\mu} = \\\\frac{g_{\\\\mu} - 2}{2}$. Precision measurements of $a_{\\\\mu}$ are a stringent probe of the SM and any deviations of this value from theoretical predictions could be a sign of new physics."
+                },
+                {
+                    "text": "The Fermilab Muon $g - 2 $ Experiment follows an experimental approach used by its predecessor at BNL \\\\cite{BNL}, and originally pioneered at CERN \\\\cite{CERN-Mainz-Daresbury:1978ccd}. A 3.1 GeV/c, spin-polarized, $\\\\mu^{+}$ beam orbits within a 7.1 m radius storage ring with a 1.45T uniform magnetic field. The muon spin precesses in the highly uniform field ($\\\\vec{B}$). The relative precession frequency of the spin with respect to the momentum, denoted as the anomalous precession frequency,  $\\\\omega_{a}$, is given as the difference between the spin precession frequency, $\\\\omega_{s}$, and the cyclotron frequency, $\\\\omega_c$:"
+                },
+                {
+                    "equation": "\\\\omega_a = \\\\omega_s - \\\\omega_c = a_{\\\\mu}  \\\\frac{q \\\\vec{B}}{m},"
+                },
+                {
+                    "text": "in the the absence of an electric field and in the limit of planar muon orbits. A  measurement of the anomalous precession frequency, coupled with precise knowledge of the storage ring magnetic field, provides a direct probe of the anomalous magnetic moment."
+                },
+                {
+                    "figure": "figures2/gminus2.pdf",
+                    "caption": "Comparison between experimental measurements of muon g --2 and theoretical predictions from \\\\cite{Boccaletti:2024guq}.",
+                    "ref": "g2results" 
+                },
+                {
+                    "text": "Muons decay to produce positrons and neutrinos. The decay positron flux becomes a means to understand the precession frequency. Parity violation in the weak force means that the highest energy positrons are emitted primarily along the direction of the muon's spin, in the rest frame.  There is a resulting modulation in the energy spectrum of the positrons in the lab frame. With precise measurement of the magnetic field and through measuring the positron flux around the ring, $a_{\\\\mu}$ is derived. %In order to achieve a precision of $\\\\mathcal{O}(100)$ ppb level, it is necessary to have precise knowledge of all possible systematic uncertainties.  due to the Lorentz boost of the positrons between the muon rest frame and the lab frame"
+                },
+                {
+                    "text": "The Fermilab Muon $g - 2$ experiment took data from 2018 until 2023. During this time, data totalling more than $\\\\times 21$ that at BNL experiment was acquired. So far, two results have been published, analyzing data from the first three runs, both present the most precise determination of $a_{\\\\mu}$ at the date of publication: \\\\cite{Muong-2:2021ojo,Muong-2:2023cdq}. The final three runs, making up over half the total data, are currently being analyzed. The combined result for the first three runs is $a_{\\\\mu}$ =  1.16592055(24) $\\\\times  10^{-11}$ (0.20 ppm) \\\\cite{PhysRevD.110.032009}.  Figure \\\\ref{fig:g2results} shows how this experimental measurement compares to various theory predictions for the SM contribution. There are large discrepancies of over 5 $\\\\sigma$ compared to the SM prediction from the \\"Muon g -- 2 Theory Initiative White Paper\\" of 2020 \\\\cite{Aoyama_2020} which utilized a dispersive calculation to get the hadronic vacuum polarization contribution. However, a newer result presented in Ref. \\\\cite{Boccaletti:2024guq}, which utilizes a hybrid approach that incorporates lattice calculations, sits much closer to the experimental result. Likewise, newer electronic scattering measurements, such as from CMD-3, have made theoretical predictions using dispersive approaches more challenging to interpret. It is evident that a large effort is needed to understand all these tensions and to provide insight into any potential deviation from SM expectation. Reference \\\\cite{illinois} details various ongoing efforts from both theorists and experimentalists to resolve the tension in these calculations."
+                },
+                {
+                    "text": "The MUonE experiment \\\\cite{Abbiendi:2016xup} aims to make a completely independent measurement of the hadronic contribution to $a_{\\\\mu}$ using space-like scattering of 150 GeV muons from electrons in low-Z beryllium. MUonE will make precise measurements of the scattering angles as these muons traverse a series of 40 identical stations, each consisting of beryllium targets surrounded by silicon tracking layers. MUonE conducted a test beam in 2023 \\\\cite{Driutti:2024vtg}. One tracking station was utilized, with a small-scale ECAL downstream and a target-less station upstream, to measure the incoming beam direction. Analysis of the data is still in progress. The full configuration with 40 stations could be prepared for the end of the decade, with a preceding stage with just 10 stations possibly taking place earlier. The final goal is to acquire $3.5 \\\\times 10^{12}$ elastic scattering events with an electron energy larger than 1 GeV, over 3 years. This will allow a stat. error of 0.3$\\\\%$ and 10 ppm sys. error. comparable with the results from the time-like dispersive approach and the lattice calculations."
+                },
+                {
+                    "text": "In addition, the J-PARC g $-$ 2 experiment \\\\cite{Iinuma:2011zz} aims to make a complementary measurement of $a_{\\\\mu}$. The J-PARC experiment will employ a low-emittance, 300 MeV/c, muon beam, produced by re-acceleration of thermal muons regenerated by the laser resonant ionization of muonium atoms emitted from a silica aerogel \\\\cite{Kamioka:2023xob}. This removes the need for strong focusing by an electric field which provides a significant correction term in the storage ring experiments. The muons are stored within a ring $20 \\\\times$ smaller than the FNAL ring and silicon sensors are used to fully reconstruct the decay positrons. The J-PARC g -- 2 experiment plans to begin data taking in 2028. In 2024, the experiment showed the first evidence of muon cooling and subsequent re-acceleration. A systematic uncertainty on $\\\\omega_a$ of 70 ppb is expected, but statistical uncertainty of 450 ppb will limit the overall precision, estimated for a two year running period."
+                }
+            ]
+        },
+        {
+            "heading": "Searches for Charged Lepton Flavor Violation",
+            "body": [
+                {
+                    "text": "Reference \\\\cite{bernstein_history} describes the long history of searches for muon charged lepton flavor violation (CLFV). Searches for CLFV in  $\\\\mu \\\\rightarrow e \\\\gamma$ began as soon as the muon was discovered. The presence of neutrino oscillation implies the existence of CLFV at loop level, resulting from neutrino oscillations in a loop, however the calculated rates are $\\\\mathcal{O}(10^{-54})$, far beyond the reach of any conceivable experiment \\\\cite{Marciano2008}. Any experimental observation of a CLFV process would be a true departure from the SM, and would conclusively demonstrate the presence of new physics. Many well-motivated extensions of the SM predict much higher rates of the CLFV processes which fall within the reach of the upcoming generation of CLFV experiments: COMET \\\\cite{ 10.1093/ptep/ptz125}, Mu2e \\\\cite{mu2eTDR} ( searching for \\\\MuToEmConv~); MEG-II \\\\cite{MEGII2018} (searching for  $\\\\mu^{+} \\\\rightarrow e^{+}  \\\\gamma$); and  Mu3e \\\\cite{Mu3e2013} (searching for $\\\\mu^{+} \\\\rightarrow e^{+} e^{-} e^{+}$ ). Such new physics models include: SO(10) super-symmetry \\\\cite{Calibbi2014,Calibbi2006}, models of scalar lepto-quarks \\\\cite{Arnold, heeck} and models with additional Higgs doublets \\\\cite{Abe2017}. Searches for \\\\MuToEmConv~ can also help place limits on lepton flavor violating Higgs decays, Ref.~\\\\cite{harnik} suggests that Mu2e and COMET have sensitivity up to $BR (h \\\\rightarrow \\\\mu e)$ of $10^{-10}$. CLFV measurements can provide invaluable insight into the mechanism behind neutrino masses.  Different mass generating Lagrangians predict different rates of CLFV, determining the rates of multiple CLFV processes allows us to discriminate among models~\\\\cite{HAMBYE201413}."
+                },
+                {
+                    "text": "New physics contributions to CLFV can be divided into two categories: dipole interactions, where a virtual loop process produces the conversion, and contact interactions, where a new virtual particle is exchanged at tree level and couples to the fermions. Searches for radiative $\\\\mu^{+} \\\\rightarrow e^{+} \\\\gamma$ decays are only sensitive to electromagnetic dipole interactions. On the other hand, experiments searching for \\\\MuToEmConv~ and $\\\\mu^{+} \\\\rightarrow e^{+} e^{-} e^{+}$ are sensitive to both photonic or contact type interactions. While searches for $\\\\mu^{+} \\\\rightarrow e^{+}  \\\\gamma$ provide powerful constraints on the dipole operators, \\\\MuToEmConv~ conversion is the most sensitive observable to explore operators involving quarks \\\\cite{deGouvea2013, Davidson:2022nnl}. The relative contributions to the different CLFV channels reflects the nature of the underlying physics model responsible \\\\cite{calibbi2017charged}. It is, therefore, crucial to explore all three muon CLFV channels to understand the potential signature of new physics. In the event that CLFV signals are observed, the conversion rate is dependent on the atomic nucleus \\\\cite{kitano2002,Cirigliano2009,Leo}. Therefore, a way to elucidate a conversion signal would be to measure the conversion rate in a material complementary to aluminum (the target material proposed in Mu2e and COMET)."
+                },
+                {
+                    "section": {
+                        "title": "Current Limits and Projections",
+                        "body": [
+                            {
+                                "text": "Table~\\\\ref{table:limits} details the current limits on each of the three muon CLFV channels along with the projected limits of future searches for these three processes. Of course, all three also have discovery potential; upper limits are shown here purely for comparison with previous searches. All the experiments listed are either online already (MEG-II) or due to begin physics data collection in the next few years. In the following sections, each channel is discussed in detail in terms of the physics signature, backgrounds, and experimental approach."
+                            },
+                            {
+                                "table": "\\\\begin{tabular}{c |c |c} \\n\\\\hline\\nChannel & Current Limit (90 $\\\\%$ C.L) & Future Projections (90 $\\\\%$ C.L)\\\\\\\\ [0.5ex] \\n\\\\hline\\\\hline\\n$\\\\mu^{+} \\\\rightarrow e^{+}  \\\\gamma$ & $3.1 \\\\times 10^{-13}$ (MEG+MEG-II) \\\\cite{MEGII:2023ltw} & $6 \\\\times 10^{-14}$ (MEG-II) \\\\cite{MEGII:2023ltw}\\\\\\\\\\n\\\\hline\\n$\\\\mu^{+} \\\\rightarrow e^{+} e^{+} e^{-}$ & $< 10^{-12}$  (SINDRUM) \\\\cite{SINDRUM:1987nra} & $5\\\\times 10^{-15} $($2 \\\\times 10^{-16})$(Mu3e Phase I (II)) \\\\cite{Mu3eLimit}\\\\\\\\\\n\\\\hline\\n$\\\\mu^{-} N \\\\rightarrow e^{-} N$&$7\\\\times 10^{-13}$ (SINDRUM-II) \\\\cite{Bertl2006} & $8 \\\\times 10^{-15}$ ($\\\\mathcal{O}(10^{-17})$) (COMET, Phase-I (II))  \\\\cite{COMET:2018auw}\\\\\\\\\\n&& $ 6 \\\\times 10^{-16}$ ($8 \\\\times 10^{-17}$ ) (Mu2e Run-I (I+II)) \\\\cite{SU2020}(\\\\cite{mu2eTDR})\\\\\\\\\\n\\\\hline \\\\hline\\n\\\\end{tabular}",
+                                "ref": "limits"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "section": {
+                        "heading": "$\\\\mu^{-} \\\\rightarrow e^{+} \\\\gamma$",
+                        "body": [
+                            {
+                                "text": "In this scenario, the new physics signature is a two-body, back-to-back, $e^+$ and $\\\\gamma$ pair, coincident in time, consistent with a $\\\\mu^+$ decay at rest ($E_{e,\\\\gamma} = 52.83 $ MeV) and emanating from the stopping target. The dominant background is an accidental one resulting from the time-coincidence of a $e^+$ and $\\\\gamma$ emanating from two independent SM processes. Radiative muon decays also present a rare background, when the outgoing neutrinos carry negligible momentum, resulting in an $e^+ \\\\gamma$ pair that are coincident in time with similar momenta."
+                            },
+                            {
+                                "text": "The MEG-II Experiment \\\\cite{MEGII:2021fah,MEGII2018} is based at PSI and is currently taking data. A schematic of the MEG-II apparatus is shown in Fig.~\\\\ref{fig:MEG2}. The experiment utilizes an almost continuous $\\\\mu^{+}$ beam with a rate of 3 $-$ 5 $\\\\times 10^{7}$ $\\\\mu$ per second. The muons are stopped on a thin target. The apparatus is optimized to exploit the two-body kinematics associated with the signal, looking for positrons and photons emanating from the target. A signal event would have a photon and positron that coincide in time, are back-to-back, and have equivalent energy of half the muon mass."
+                            },
+                            {
+                                "figure": "figures2/A-sketch-of-the-MEG-II-detector-with-a-simulated-m-e-g-event.png",
+                                "caption": "A schematic of the MEG-II appratus. $\\\\mu^{+}$ are incident on a thin target. The signal is a two body process involving a back-to-back photon and positron from the target.",
+                                "ref": "MEG2"
+                            },
+                            {
+                                "text": "MEG-II employs a magnetic spectrometer to produce helical positron tracks. The COBRA (COnstant Bending RAdius) magnet has a maximum field of 1.3 T at the stopping target with a gradient that drops along the beam axis forcing signal-like positrons away from the target upstream or downstream along the beam axis in a helical trajectory. A cylindrical drift chamber (CDCH) is then used to reconstruct the positron tracks. The CDCH geometry allows for precise reconstruction of the positrons' position along the wire axis. The single-volume detector design is lighter than that of the MEG experiment, thus suppressing multiple scattering and improving momentum resolution. The positron time is measured in a pixilated timing counter array (pTC) with 512 pixilated timing counters. Each counter is made of scintillator with SiPM readout on the two ends. Each counter has a typical resolution of $\\\\sim$ 100 ps resulting in excellent time resolution of $\\\\sigma_t \\\\sim $ 35 ps. The fitted track with information from the CDCH and SPX is propagated back to the stopping target for measurements of the positron position, direction, momentum, and time at the target."
+                            },
+                            {
+                                "text": "A single-volume, 800 L, liquid Xenon (LXe) calorimeter is used to detect the outgoing photons and measure their energy. The vertex of a photon/positron production is extrapolated back to the target.  A calorimeter containing 4096 multi-pixel photon counters (MPPCs) provides excellent position resolution. A radiative decay counter (RDC) is employed to eliminate some of the accidental time coincidences."
+                            },
+                            {
+                                "text": "MEG-II started collecting physics data in 2021 following a successful engineering run. In 2023 their first physics result was released \\\\cite{MEGII:2023ltw}. No signal was observed and a limit of $7.5 \\\\times 10^{-13} $ at 90 $\\\\%$ C.L was established from this data set. This was combined with the older MEG result to produce the limit shown in Table~\\\\ref{table:limits} ($3.1 \\\\times 10^{-13}$ at 90 $\\\\%$ C.L.). The experiment continues to collect data, with the end goal of achieving $\\\\times$10 sensitivity on the previous MEG result."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "section": {
+                        "heading": "$\\\\mu^{+} \\\\rightarrow e^{+} e^{+} e^{-}$",
+                        "body": [
+                            {
+                                "text": "In this scenario, the signal is a three co-planar charged tracks, $e^+, e^+$ and $e^-$, coincident in time, and originating from a common vertex and with a total energy equal to the muon mass and with a total momentum of zero. Internal conversions that result in $e^+ e^+ e^-$ and two outgoing neutrinos present a background. The three charged tracks emanate from a common vertex and they are coincident in time. However, the total energy of the tracks is not equal to the muon mass and their momentum is not conserved. Accidental backgrounds also occur, in this case the tracks do not have a common vertex, they are not coincident in time and the kinematics of the charged tracks is different from the signal."
+                            },
+                            {
+                                "figure": "figures2/Mu3e.jpg",
+                                "caption": "A schematic of the Mu3e apparatus. A cone shaped target helps spread out the decay vertices. Tracks a recurled to improve momentum resolution.",
+                                "ref": "Mu3e"
+                            },
+                            {
+                                "text": "Mu3e, also based at PSI, plans to operate in two \\"Phases.\\" In Phase-I, Mu3e will use a $\\\\mu^{+}$ beam at a rate of $10^{8}$ $\\\\mu$/s. These muons are stopped on a double-cone target. A schematic of the Mu3e apparatus is shown in Fig.~\\\\ref{fig:Mu3e}. A magnetic field is applied to aid reconstruction of the charged tracks that are then measured using a series of pixel sensors (for position), scintillating fibers and tiles (for timing). At the core of the detector design is a set of 2844 custom monolithic active pixel sensors (HV-MAPS). The pixels are small and thin in order to yield precise position measurements along the electron/positron trajectories and to minimize multiple scattering and energy loss. The pixels consist of 50 $\\\\mu$m of active material and 50 $\\\\mu$m of support structure with an area of 80 $\\\\times$ 80 $\\\\mu$m$^2$.  After leaving the target, the electron/positrons immediately intersect inner pixel layers followed by a set of scintillating fibers which provide an initial time measurement at the pixel layers. The electron/positron tracks are recurled and intersect another pixel layer and scintillating tiles this additional information helps provide the final precise timing measurement."
+                            },
+                            {
+                                "text": "Phase-I data-taking will begin shortly. Phase-I will yield enough data to provide a factor of $\\\\times$ 100 improvement on the current limit. Phase-II will reach a sensitivity of $2 \\\\times 10^{-16}$ at the 90$\\\\%$ C.L. To achieve this a higher beam rate of $2 \\\\times 10^{9} \\\\mu$/s is required as well as additional pixel recurl layers and scintillator layers to aid in the combinatoric issues at even higher beam rates and to improve the resolutions. %Phase-II is planned to come online in the late 2020s."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "section": {
+                        "heading": "$\\\\mu^{-} N \\\\rightarrow e^{-} N$",
+                        "body": [
+                            {
+                                "text": "In this scenario, negatively charged muons are captured in the field of the target (Al) nucleus, forming a muonic atom. The muon cascades down in energy to the muonic $1s$ bound state where coherent, neutrinoless muon to electron conversion results in the emission of a mono-energetic electron of energy:"
+                            },
+                            {
+                                "equation": "E_{\\\\mu e} = m_{\\\\mu} - E_{BE,1s} - E_{recoil},"
+                            },
+                            {
+                                "text": "where $m_{\\\\mu}$ (105.66 MeV/c$^{2}$) is the muon mass, $E_{BE,1s}$ is the binding energy of the $1s$ state, and $E_{recoil}$ denotes the nuclear recoil energy; $E_{\\\\mu e}$ is nuclear dependent, for instance, $E_{\\\\mu e}$ = 104.97 MeV for aluminum (Al)."
+                            },
+                            {
+                                "text": "The Mu2e \\\\cite{mu2eTDR}, at Fermilab, and COMET \\\\cite{COMET:2018auw}, at J-PARC, experiments will search for the coherent, neutrinoless conversion of muon into electron in a muonic atom (\\\\MuToEmConv). Both experiments are based upon a concept proposed in Ref. \\\\cite{MECO}. Experiments searching for \\\\MuToEmConv~ have the advantage of being free of accidental backgrounds, however, there are two general classes of backgrounds that must be eliminated:"
+                            },
+                            {
+                                "list": [
+                                    { 
+                                        "item": "Backgrounds that scale with the number of muons. " 
+                                    },
+                                    { 
+                                        "list": [
+                                            {
+                                                "item": "**Decay-in-orbit (DIO)**: arises when muons in the 1$s$ state undergo normal weak decay while in orbit: $\\\\mu^- \\\\rightarrow e^- \\\\nu_{\\\\mu} \\\\bar{\\\\nu}_e$. The energy, $E_{\\\\mu e}$, of the outgoing conversion electron is well above the end-point energy of the free muon decay spectrum ($\\\\sim 52.8$ MeV) but when the decay occurs in the presence of a nucleus the outgoing electron can exchange momentum with the nucleus, resulting in a long recoil tail \\\\cite{czarnecki}. Experiments searching for \\\\MuToEmConv~ must design their tracking detectors for high momentum resolution to mitigate against these tail electrons. For example, Mu2e employs a straw tube tracker made of 20,000, 5 mm diameter thin straws orientated in sets of panels. These panels are oriented in circles ($3 \\\\times 120$ degrees) and along the beam axis, and combined in sets to form panels, two panels form a station. The overlap of straws at varying angles allows for stereo reconstruction. This geometry, along with sophisticated reconstruction algorithms, allows for momentum resolution $<$ 180 MeV/c. In addition, the center of the tracker is kept hollow, already completely blinding the detector to low momentum ( $\\\\lesssim 75 $ MeV/c) electrons from the target."
+                                            },
+                                            {
+                                                "item": "**Radiative Pion Capture (RPC)**: arises from the process, $\\\\pi^-N \\\\rightarrow \\\\gamma N^{\\\\prime}$, where a $\\\\sim$ 105 MeV/c electron can be produced from the photon pair-production.  Both Mu2e and COMET use a pulsed proton beam to overcome this background.  Pions have a short (26 ns) lifetime compared to muons (2.2 $\\\\mu$s) and the experiments employ a delayed live-gate to effectively \\"wait out\\" pion decays.  Mu2e will utilize a time-window of $\\\\sim$ 700 ns in the 1695 ns period of the Fermilab Delivery Ring and COMET will use a time window from $\\\\sim$ 700 to 1170 ns."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "item": "Backgrounds that scale with running time."
+                                    },
+                                    {
+                                        "list": [
+                                            {
+                                                "item": "**Cosmic-ray Induced** : cosmic muons can knock electrons out of the stopping target or provide other sources of backgrounds which produce $\\\\sim$ 105 MeV/c particles. Neutral secondaries from cosmic rays can also generate backgrounds. Both Mu2e and COMET employ active cosmic ray veto systems to eliminate cosmic-ray induced backgrounds."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "The Mu2e and COMET apparatus are shown in Fig.~\\\\ref{fig:mu2e} and ~\\\\ref{fig:COMET} respectively. Mu2e and COMET are designed to overcome the limitations faced by SINDRUM-II. In addition to eliminating all backgrounds by design both will employ an intense muon beam that is created and transported via a series of super-conducting solenoids with graded magnetic fields."
+                            },
+                            {
+                                "text": "The Mu2e experiment muon beam is produced as a tertiary beam. 8 GeV, 8 kW protons intersect a tungsten target inside the production solenoid. The experiment collects the backward moving (with respect to the incoming beam) $\\\\pi^{-}$ that decay into $\\\\mu^{-}$. The transport solenoid has an \\"S\\" shape that helps remove line of site backgrounds. The transport solenoid contains collimators that select negative charged, low momentum muons. Antiproton windows remove any remaining $\\\\bar{p}$'s in the beam. The detector solenoid is the final solenoid and contains the aluminum stopping target, consisting of 37 thin ($\\\\sim$100$\\\\mu$m) aluminum foils (to minimize scattering and energy losses from the outgoing conversion electron). The magnetic field in the detector solenoid results in helical electron tracks. The momentum of these tracks is measured by the aforementioned straw tube tracker followed by a CsI calorimeter system which helps identify the electrons."
+                            },
+                            {
+                                "figure": "figures2/COMET.png",
+                                "caption": "A schematic of the COMET apparatus. Phase-I and II are distinctly different.  There are several difference from Mu2e, most notably the placement of the stopping target and the fact the a spectrometer is used in a final bend before the detectors.",
+                                "ref": "COMET"
+                            },
+                            {
+                                "text": "Mu2e will begin collecting data in early 2027. The full data sample will be taken over two run periods. Ref.~\\\\cite{SU2020} details the expected upper limit at 90 $\\\\%$ C.L and $5 \\\\sigma$ discovery potential of Run-I to be $6 \\\\times 10^{-16}$ and $1 \\\\times 10^{-15}$ respectively. The total sensitivity of Runs I and II is projected to be $\\\\mathcal{O}(10^{-17})$. The hardware employed in both runs will be identical.  COMET Phase-I is intended to begin in 2025 and has a projected upper limit of $5 \\\\times 10^{-15}$ at 90 $\\\\%$ C.L. Phase-II is a significant upgrade from Phase-I and is expected to be complete a few years after the completion of Phase-I. The sensitivity of Phase-II is projected to be comparable to that of the full Mu2e program."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "section": {
+                        "heading": "Looking Further Ahead",
+                        "body": [
+                            {
+                                "text": "The next decade will see unprecedented improvements in our understanding of muon CLFV. In the event of a signal in any of the outlined CLFV searches, this would open a new age of particle physics and signify, conclusively that beyond Standard Model physics was at play. Attention would then turn to understanding the observed signal through subsequent measurements. Mu2e-II \\cite{Mu2eII} is a proposed extension to Mu2e which could be built at Fermilab utilizing the PIP-II beam. Much of the Mu2e hardware would be reused. The projected sensitivity of Mu2e-II is $3 \\times 10^{-18}$. R$\\&$D continues in order to finalize the detector designs for Mu2e-II. In addition, there is an ambitious proposal to build an Advanced Muon Facility (AMF) \\cite{AMF} at Fermilab. This machine would host a suite of CLFV searches, searches for all three muon CLFV channels could be conducted. The facility would also provide intense muon beams for an array of additional studies. The design of AMF is in its infancy and a large amount of R$\\&$D is required to complete its conceptual design."
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "heading": "Conclusion",
+            "body": [
+                {
+                    "text": "The current decade has already seen high-profile results from the Fermilab g --2 Experiment which provided a measurement of $a_{\\mu}$ to world-leading precision. The effort to resolve tensions in the SM predictions continues, with the J-PARC  g --2 Experiment expected to provide a complementary measurement of $a_{\\mu}$ in the coming years. Likewise, searches for muon CLFV are a powerful probe for new physics, with already tight constraints, orders of magnitude below analogous constraints on tau processes. In the coming decade results from MEG-II, Mu3e, COMET and Mu2e will collectively explore an array of new physics operators and are expected to constrain new physics models up to $10^{4}$ TeV/c$^{2}$."
+                }
+            ]
+        }
+    ],
+    "bibliographies": {
+        "mu2eTDR": {
+            "year": "2014",
+            "month": "10",
+            "doi": "10.2172/1172555",
+            "reportnumber": "FERMILAB-TM-2594, FERMILAB-DESIGN-2014-01",
+            "primaryclass": "physics.ins-det",
+            "archiveprefix": "arXiv",
+            "eprint": "1501.05241",
+            "collaboration": "Mu2e",
+            "author": "Bartoszek, L. and others",
+            "ENTRYTYPE": "article"
+        },
+        "calibbi2017charged": {
+            "year": "2018",
+            "pages": "71--174",
+            "number": "2",
+            "volume": "41",
+            "journal": "Riv. Nuovo Cim.",
+            "doi": "10.1393/ncr/i2018-10144-0",
+            "primaryclass": "hep-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "1709.00294",
+            "author": "Calibbi, Lorenzo and Signorelli, Giovanni",
+            "ENTRYTYPE": "article"
+        },
+        "Calibbi2006": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.74.116002",
+            "doi": "10.1103/PhysRevD.74.116002",
+            "publisher": "American Physical Society",
+            "month": "Dec",
+            "year": "2006",
+            "numpages": "21",
+            "pages": "116002",
+            "issue": "11",
+            "volume": "74",
+            "journal": "Phys. Rev. D",
+            "author": "Calibbi, L. and Faccia, A. and Masiero, A. and Vempati, S. K.",
+            "ENTRYTYPE": "article"
+        },
+        "Calibbi2014": {
+            "month": "Dec",
+            "year": "2014",
+            "author": "Calibbi, Lorenzo and Paradisi, Paride and Ziegler, Robert",
+            "publisher": "Springer Science and Business Media LLC",
+            "journal": "Eur. Phys. J. C",
+            "number": "12",
+            "doi": "10.1140/epjc/s10052-014-3211-x",
+            "url": "http://dx.doi.org/10.1140/epjc/s10052-014-3211-x",
+            "issn": "1434-6052",
+            "volume": "74",
+            "ENTRYTYPE": "article"
+        },
+        "HAMBYE201413": {
+            "keywords": "Lepton flavor violation, neutrino masses, seesaw models",
+            "author": "Thomas Hambye",
+            "url": "https://www.sciencedirect.com/science/article/pii/S092056321400005X",
+            "doi": "https://doi.org/10.1016/j.nuclphysbps.2014.02.004",
+            "issn": "0920-5632",
+            "note": "1st Conference on Charged Lepton Flavor Violation",
+            "year": "2014",
+            "pages": "13-19",
+            "volume": "248-250",
+            "journal": "Nuc. Phys. B - Proceedings Supplements",
+            "ENTRYTYPE": "article"
+        },
+        "Abe2017": {
+            "month": "Jul",
+            "year": "2017",
+            "author": "Abe, Tomohiro and Sato, Ryosuke and Yagyu, Kei",
+            "publisher": "Springer Science and Business Media LLC",
+            "journal": "Journal of High Energy Physics",
+            "number": "7",
+            "doi": "10.1007/jhep07(2017)012",
+            "url": "http://dx.doi.org/10.1007/JHEP07(2017)012",
+            "issn": "1029-8479",
+            "volume": "2017",
+            "ENTRYTYPE": "article"
+        },
+        "Arnold": {
+            "month": "Aug",
+            "year": "2013",
+            "author": "Arnold, Jonathan M. and Fornal, Bartosz and Wise, Mark B.",
+            "publisher": "American Physical Society (APS)",
+            "journal": "Phys Rev D",
+            "number": "3",
+            "doi": "10.1103/physrevd.88.035009",
+            "url": "http://dx.doi.org/10.1103/PhysRevD.88.035009",
+            "issn": "1550-2368",
+            "volume": "88",
+            "ENTRYTYPE": "article"
+        },
+        "Hino2014206": {
+            "year": "2014",
+            "pages": "207-207",
+            "volume": "49",
+            "journal": "Nucl. Phys. B - Proc. Suppl. 253-255",
+            "author": "Y. Hino et al",
+            "ENTRYTYPE": "article"
+        },
+        "Sindrum2e+": {
+            "year": "1998",
+            "pages": "334--338",
+            "volume": "422",
+            "journal": "Phys. Lett. B",
+            "doi": "10.1016/S0370-2693(97)01423-8",
+            "collaboration": "SINDRUM II",
+            "author": "Kaulard, J. and others",
+            "ENTRYTYPE": "article"
+        },
+        "kaon": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.96.075027",
+            "doi": "10.1103/PhysRevD.96.075027",
+            "publisher": "American Physical Society",
+            "month": "Oct",
+            "year": "2017",
+            "numpages": "8",
+            "pages": "075027",
+            "issue": "7",
+            "volume": "96",
+            "journal": "Phys. Rev. D",
+            "author": "Yeo, Beomki and  others",
+            "ENTRYTYPE": "article"
+        },
+        "lucà2017panel": {
+            "primaryclass": "physics.ins-det",
+            "archiveprefix": "arXiv",
+            "eprint": "1710.03799",
+            "year": "2017",
+            "author": "Alessandra Lucà",
+            "ENTRYTYPE": "misc"
+        },
+        "SU2020": {
+            "year": "2023",
+            "pages": "54",
+            "number": "1",
+            "volume": "9",
+            "journal": "Universe",
+            "doi": "10.3390/universe9010054",
+            "reportnumber": "FERMILAB-PUB-22-749-PPD",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2210.11380",
+            "collaboration": "Mu2e",
+            "author": "Abdi, F. and others",
+            "ENTRYTYPE": "article"
+        },
+        "MCtarget": {
+            "url": "https://indico.fnal.gov/event/46752/contributions/224118/attachments/147660/189236/MCa__MUC_Targetry_Snowmass_23Sept2021.pdf",
+            "year": "2021",
+            "author": "M. Calviani et al",
+            "title": "Iarget Development for Muon Collider",
+            "ENTRYTYPE": "misc"
+        },
+        "osti_1523418": {
+            "month": "4",
+            "year": "2019",
+            "place": "United States",
+            "volume": "1162",
+            "number": "1",
+            "journal": "Journal of Physics. Conference Series",
+            "doi": "10.1088/1742-6596/1162/1/012027",
+            "author": "Atanov, N. and others",
+            "ENTRYTYPE": "article"
+        },
+        "Xing2019": {
+            "year": "2020",
+            "pages": "083",
+            "volume": "NuFact2019",
+            "journal": "PoS",
+            "doi": "10.22323/1.369.0083",
+            "collaboration": "Comet",
+            "author": "Xing, Tianyu",
+            "ENTRYTYPE": "article"
+        },
+        "Geib2016": {
+            "slaccitation": "%%CITATION = ARXIV:1609.09088;%%",
+            "reportnumber": "MPP-2016-298",
+            "primaryclass": "hep-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "1609.09088",
+            "doi": "10.1016/j.physletb.2016.11.029",
+            "pages": "157-162",
+            "year": "2017",
+            "volume": "B764",
+            "journal": "Phys. Lett.",
+            "author": "Geib, Tanja and others",
+            "ENTRYTYPE": "article"
+        },
+        "deGouvea2013": {
+            "year": "2013",
+            "pages": "75--92",
+            "volume": "71",
+            "journal": "Prog. Part. Nucl. Phys.",
+            "doi": "10.1016/j.ppnp.2013.03.006",
+            "primaryclass": "hep-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "1303.4097",
+            "author": "de Gouv{\\^e}a, Andre and Vogel, Petr",
+            "ENTRYTYPE": "article"
+        },
+        "Petcov1977": {
+            "note": "[Erratum: Sov.J.Nucl.Phys. 25, 698 (1977), Erratum: Yad.Fiz. 25, 1336 (1977)]",
+            "year": "1977",
+            "pages": "340",
+            "volume": "25",
+            "journal": "Sov. J. Nucl. Phys.",
+            "reportnumber": "JINR-E2-10176, JINR-P2-9595",
+            "author": "Petcov, S.T.",
+            "ENTRYTYPE": "article"
+        },
+        "Bertl2006": {
+            "slaccitation": "%%CITATION = EPHJA,C47,337;%%",
+            "doi": "10.1140/epjc/s2006-02582-x",
+            "pages": "337-346",
+            "year": "2006",
+            "volume": "C47",
+            "journal": "Eur. Phys. J.",
+            "collaboration": "SINDRUM II",
+            "author": "Bertl, Wilhelm H. and others",
+            "ENTRYTYPE": "article"
+        },
+        "kitano2002": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.66.096002",
+            "doi": "10.1103/PhysRevD.66.096002",
+            "publisher": "American Physical Society",
+            "month": "Nov",
+            "year": "2002",
+            "numpages": "14",
+            "pages": "096002",
+            "issue": "9",
+            "volume": "66",
+            "journal": "Phys. Rev. D",
+            "author": "Kitano, Ryuichiro and Koike, Masafumi and Okada, Yasuhiro",
+            "ENTRYTYPE": "article"
+        },
+        "Muong-2:2023cdq": {
+            "year": "2023",
+            "pages": "161802",
+            "number": "16",
+            "volume": "131",
+            "journal": "Phys. Rev. Lett.",
+            "doi": "10.1103/PhysRevLett.131.161802",
+            "reportnumber": "FERMILAB-PUB-23-385-AD-CSAID-PPD",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2308.06230",
+            "collaboration": "Muon $g\\ensuremath{-}2$",
+            "author": "Aguillard, D. P. and others",
+            "ENTRYTYPE": "article"
+        },
+        "BNL": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.73.072003",
+            "doi": "10.1103/PhysRevD.73.072003",
+            "publisher": "American Physical Society",
+            "month": "Apr",
+            "year": "2006",
+            "numpages": "41",
+            "pages": "072003",
+            "issue": "7",
+            "volume": "73",
+            "journal": "Phys. Rev. D",
+            "collaboration": "Muon $g\\ensuremath{-}2$",
+            "author": "Bennett, G. W. and others",
+            "ENTRYTYPE": "article"
+        },
+        "PhysRevD.110.032009": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.110.032009",
+            "doi": "10.1103/PhysRevD.110.032009",
+            "publisher": "American Physical Society",
+            "month": "Aug",
+            "year": "2024",
+            "numpages": "47",
+            "pages": "032009",
+            "issue": "3",
+            "volume": "110",
+            "journal": "Phys. Rev. D",
+            "collaboration": "Muon $g\\ensuremath{-}2$ ",
+            "author": "Aguillard, D. P. and others",
+            "ENTRYTYPE": "article"
+        },
+        "CMD-3:2023alj": {
+            "year": "2024",
+            "pages": "112002",
+            "number": "11",
+            "volume": "109",
+            "journal": "Phys. Rev. D",
+            "doi": "10.1103/PhysRevD.109.112002",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2302.08834",
+            "collaboration": "CMD-3",
+            "author": "Ignatov, F. V. and others",
+            "ENTRYTYPE": "article"
+        },
+        "Boccaletti:2024guq": {
+            "year": "2024",
+            "month": "7",
+            "primaryclass": "hep-lat",
+            "archiveprefix": "arXiv",
+            "eprint": "2407.10913",
+            "author": "Boccaletti, A. and others",
+            "ENTRYTYPE": "article"
+        },
+        "CERN-Mainz-Daresbury:1978ccd": {
+            "year": "1979",
+            "pages": "1--75",
+            "volume": "150",
+            "journal": "Nucl. Phys. B",
+            "doi": "10.1016/0550-3213(79)90292-X",
+            "reportnumber": "Print-79-0088 (CERN)",
+            "collaboration": "CERN-Mainz-Daresbury",
+            "author": "Bailey, J. and others",
+            "ENTRYTYPE": "article"
+        },
+        "anderson": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRev.50.263",
+            "doi": "10.1103/PhysRev.50.263",
+            "publisher": "American Physical Society",
+            "month": "Aug",
+            "year": "1936",
+            "numpages": "0",
+            "pages": "263--271",
+            "issue": "4",
+            "volume": "50",
+            "journal": "Phys. Rev.",
+            "author": "Anderson, Carl D. and Neddermeyer, Seth H.",
+            "ENTRYTYPE": "article"
+        },
+        "Muong-2:2021ojo": {
+            "year": "2021",
+            "pages": "141801",
+            "number": "14",
+            "volume": "126",
+            "journal": "Phys. Rev. Lett.",
+            "doi": "10.1103/PhysRevLett.126.141801",
+            "reportnumber": "FERMILAB-PUB-21-132-E",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2104.03281",
+            "collaboration": "Muon $g\\ensuremath{-}2$",
+            "author": "Abi, B. and others",
+            "ENTRYTYPE": "article"
+        },
+        "10.1093/ptep/ptz125": {
+            "pages": "033C01",
+            "note": "033C01",
+            "url": "https://doi.org/10.1093/ptep/ptz125",
+            "doi": "10.1093/ptep/ptz125",
+            "issn": "2050-3911",
+            "month": "03",
+            "year": "2020",
+            "number": "3",
+            "volume": "2020",
+            "journal": "Progress of Theoretical and Experimental Physics",
+            "author": "Abramishvili, R and others",
+            "collaboration": "COMET",
+            "ENTRYTYPE": "article"
+        },
+        "MEGII2018": {
+            "url": "https://doi.org/10.1140/epjc/s10052-018-5845-6",
+            "doi": "10.1140/epjc/s10052-018-5845-6",
+            "issn": "1434-6052",
+            "pages": "380",
+            "number": "5",
+            "volume": "78",
+            "day": "16",
+            "month": "May",
+            "year": "2018",
+            "journal": "Eur. Phys. J. C",
+            "author": "Baldini, A. M. and {et al}",
+            "ENTRYTYPE": "article"
+        },
+        "Mu3e2013": {
+            "url": "https://arxiv.org/abs/1301.6113",
+            "primaryclass": "physics.ins-det",
+            "archiveprefix": "arXiv",
+            "eprint": "1301.6113",
+            "year": "2013",
+            "author": "Blondel, A. and {et al}",
+            "ENTRYTYPE": "misc"
+        },
+        "DeeMe2010": {
+            "url": "http://deeme.phys.sci.osaka-u.ac.jp/documents/deeme-proposal-r28.pdf",
+            "year": "2010",
+            "author": "Aoki, M. and {et at}",
+            "ENTRYTYPE": "misc"
+        },
+        "1974_CLFV_Eliezer_Ross": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.10.3088",
+            "doi": "10.1103/PhysRevD.10.3088",
+            "publisher": "American Physical Society",
+            "month": "Nov",
+            "year": "1974",
+            "numpages": "0",
+            "pages": "3088--3092",
+            "issue": "9",
+            "volume": "10",
+            "journal": "Phys. Rev. D",
+            "author": "Eliezer, Shalom and Ross, Douglas A.",
+            "ENTRYTYPE": "article"
+        },
+        "Lee2018": {
+            "issn": "2296-424X",
+            "doi": "10.3389/fphy.2018.00133",
+            "url": "https://www.frontiersin.org/article/10.3389/fphy.2018.00133",
+            "pages": "133",
+            "year": "2018",
+            "volume": "6",
+            "journal": "Frontiers in Physics",
+            "author": "Lee, Myeong Jae",
+            "ENTRYTYPE": "article"
+        },
+        "bernstein_history": {
+            "issn": "2296-424X",
+            "doi": "10.3389/fphy.2019.00001",
+            "url": "https://www.frontiersin.org/article/10.3389/fphy.2019.00001",
+            "year": "2019",
+            "pages": "1",
+            "volume": "7",
+            "journal": "Frontiers in Physics",
+            "author": "Bernstein, Robert H.",
+            "ENTRYTYPE": "article"
+        },
+        "Cirigliano2009": {
+            "month": "Jul",
+            "year": "2009",
+            "author": "Cirigliano, Vincenzo and Kitano, Ryuichiro and Okada, Yasuhiro and Tuzon, Paula",
+            "publisher": "American Physical Society (APS)",
+            "journal": "Phys. Rev. D",
+            "number": "1",
+            "doi": "10.1103/physrevd.80.013002",
+            "url": "http://dx.doi.org/10.1103/PhysRevD.80.013002",
+            "issn": "1550-2368",
+            "volume": "80",
+            "ENTRYTYPE": "article"
+        },
+        "Crivellin2017": {
+            "month": "May",
+            "year": "2017",
+            "author": "Crivellin, A. and Davidson, S. and Pruna, G. M. and Signer, A.",
+            "publisher": "Springer Science and Business Media LLC",
+            "journal": "Journal of High Energy Physics",
+            "number": "5",
+            "doi": "10.1007/jhep05(2017)117",
+            "url": "http://dx.doi.org/10.1007/JHEP05(2017)117",
+            "issn": "1029-8479",
+            "volume": "2017",
+            "title": "Renormalisation-group improved analysis of μ → e processes in a systematic effective-field-theory approach",
+            "ENTRYTYPE": "article"
+        },
+        "Marciano2008": {
+            "pages": "315-341",
+            "year": "2008",
+            "volume": "58",
+            "journal": "Annual Review of Nuclear and Particle Science",
+            "author": "Marciano, William J. and Mori, Toshinori and Roney, J. Michael",
+            "ENTRYTYPE": "article"
+        },
+        "Teshima2019": {
+            "year": "2020",
+            "pages": "082",
+            "volume": "NuFact2019",
+            "journal": "PoS",
+            "doi": "10.22323/1.369.0082",
+            "primaryclass": "physics.ins-det",
+            "archiveprefix": "arXiv",
+            "eprint": "1911.07143",
+            "title": "{Status of the DeeMe Experiment, an Experimental Search for $\\mu$-$e$ Conversion at J-PARC MLF}",
+            "author": "Teshima, N.",
+            "ENTRYTYPE": "article"
+        },
+        "heeck": {
+            "month": "Dec",
+            "year": "2018",
+            "author": "Heeck, Julian and Teresi, Daniele",
+            "publisher": "Springer Science and Business Media LLC",
+            "journal": "Journal of High Energy Physics",
+            "number": "12",
+            "doi": "10.1007/jhep12(2018)103",
+            "url": "http://dx.doi.org/10.1007/JHEP12(2018)103",
+            "issn": "1029-8479",
+            "volume": "2018",
+            "ENTRYTYPE": "article"
+        },
+        "harnik": {
+            "month": "Mar",
+            "year": "2013",
+            "author": "Harnik, Roni and Kopp, Joachim and Zupan, Jure",
+            "publisher": "Springer Science and Business Media LLC",
+            "journal": "Journal of High Energy Physics",
+            "number": "3",
+            "doi": "10.1007/jhep03(2013)026",
+            "url": "http://dx.doi.org/10.1007/JHEP03(2013)026",
+            "issn": "1029-8479",
+            "volume": "2013",
+            "ENTRYTYPE": "article"
+        },
+        "Mu2eII": {
+            "primaryclass": "physics.ins-det",
+            "archiveprefix": "arXiv",
+            "eprint": "1802.02599",
+            "year": "2018",
+            "collaboration": "Mu2eII",
+            "title": "Expression of Interest for Evolution of the Mu2e Experiment",
+            "ENTRYTYPE": "misc"
+        },
+        "MeGLimit": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevLett.110.201801",
+            "doi": "10.1103/PhysRevLett.110.201801",
+            "publisher": "American Physical Society",
+            "month": "May",
+            "year": "2013",
+            "numpages": "5",
+            "pages": "201801",
+            "issue": "20",
+            "volume": "110",
+            "journal": "Phys. Rev. Lett.",
+            "collaboration": "MEG",
+            "title": "New Constraint on the Existence of the ${\\ensuremath{\\mu}}^{+}\\ensuremath{\\rightarrow}{e}^{+}\\ensuremath{\\gamma}$ Decay",
+            "ENTRYTYPE": "article"
+        },
+        "Mu3eLimit": {
+            "url": "https://www.sciencedirect.com/science/article/pii/0550321388904622",
+            "doi": "https://doi.org/10.1016/0550-3213(88)90462-2",
+            "issn": "0550-3213",
+            "year": "1988",
+            "pages": "1-6",
+            "number": "1",
+            "volume": "299",
+            "journal": "Nuc. Phys. B",
+            "collaboration": "SINDRUM",
+            "ENTRYTYPE": "article"
+        },
+        "Altransition": {
+            "author": "P.C. Divari and J.D. Vergados and T.S. Kosmas",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0375947405012467",
+            "doi": "https://doi.org/10.1016/j.nuclphysa.2005.12.003",
+            "issn": "0375-9474",
+            "year": "2006",
+            "pages": "259-270",
+            "volume": "767",
+            "journal": "Nuc. Phys. A",
+            "title": "Transition matrix elements for the exotic double-charge exchange $\\mu^- \\to e^+$ conversion in ${}^{27}{\\rm Al}$",
+            "ENTRYTYPE": "article"
+        },
+        "1998334": {
+            "author": "J. Kaulard and C. Dohmen and H. Haan and W. Honecker and D. Junker and G. Otter and M. Starlinger and P. Wintz and J. Hofmann and W. Bertl and J. Egger and B. Krause and S. Eggli and R. Engfer and Ch. Findeisen and E.A. Hermes and T. Kozlowski and C.B. Niebuhr and M. Rutsche and H.S. Pruys and A. {van der Schaaf}",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0370269397014238",
+            "doi": "https://doi.org/10.1016/S0370-2693(97)01423-8",
+            "issn": "0370-2693",
+            "year": "1998",
+            "pages": "334-338",
+            "number": "1",
+            "volume": "422",
+            "journal": "Physics Letters B",
+            "title": "Improved limit on the branching ratio of $\\mu^- \\to e^+$ conversion on titanium",
+            "ENTRYTYPE": "article"
+        },
+        "PhysRevC.21.1951": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevC.21.1951",
+            "doi": "10.1103/PhysRevC.21.1951",
+            "publisher": "American Physical Society",
+            "month": "May",
+            "year": "1980",
+            "numpages": "0",
+            "pages": "1951--1958",
+            "issue": "5",
+            "volume": "21",
+            "journal": "Phys. Rev. C",
+            "author": "Fearing, Harold W.",
+            "title": "Relativistic calculation of radiative muon capture in hydrogen and $^{3}\\mathrm{He}$",
+            "ENTRYTYPE": "article"
+        },
+        "CHRISTILLIN1980331": {
+            "author": "P. Christillin and M. Rosa-Clot and S. Servadio",
+            "url": "https://www.sciencedirect.com/science/article/pii/0375947480903449",
+            "doi": "https://doi.org/10.1016/0375-9474(80)90344-9",
+            "issn": "0375-9474",
+            "year": "1980",
+            "pages": "331-366",
+            "number": "2",
+            "volume": "345",
+            "journal": "Nuc. Phys. A",
+            "title": "Radiative muon capture in medium-heavy nuclei",
+            "ENTRYTYPE": "article"
+        },
+        "FeldmanCousins1998": {
+            "pages": "3873–3889",
+            "month": "Apr",
+            "year": "1998",
+            "author": "Feldman, Gary J. and Cousins, Robert D.",
+            "publisher": "American Physical Society (APS)",
+            "journal": "Physical Review D",
+            "number": "7",
+            "doi": "10.1103/physrevd.57.3873",
+            "url": "http://dx.doi.org/10.1103/PhysRevD.57.3873",
+            "issn": "1089-4918",
+            "volume": "57",
+            "title": "Unified approach to the classical statistical analysis of small signals",
+            "ENTRYTYPE": "article"
+        },
+        "MEASDAY2001243": {
+            "author": "D.F. Measday",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0370157301000126",
+            "doi": "https://doi.org/10.1016/S0370-1573(01)00012-6",
+            "issn": "0370-1573",
+            "year": "2001",
+            "pages": "243-409",
+            "number": "4",
+            "volume": "354",
+            "journal": "Physics Reports",
+            "title": "The nuclear physics of muon capture",
+            "ENTRYTYPE": "article"
+        },
+        "Plestid:2020irv": {
+            "year": "2021",
+            "pages": "033002",
+            "number": "3",
+            "volume": "103",
+            "journal": "Phys. Rev. D",
+            "doi": "10.1103/PhysRevD.103.033002",
+            "reportnumber": "FERMILAB-PUB-20-525-T",
+            "primaryclass": "hep-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "2010.09509",
+            "title": "{High energy spectrum of internal positrons from radiative muon capture on nuclei}",
+            "author": "Plestid, Ryan and Hill, Richard J.",
+            "ENTRYTYPE": "article"
+        },
+        "mackenzie2020search": {
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2009.00214",
+            "year": "2020",
+            "author": "M. MacKenzie and P. Murat",
+            "title": "Search for $\\mu^- \\rightarrow e^+$ conversion: what can be learned from the SINDRUM-II positron data on a gold target",
+            "ENTRYTYPE": "misc"
+        },
+        "GEIB2017157": {
+            "author": "Tanja Geib and Alexander Merle and Kai Zuber",
+            "url": "https://www.sciencedirect.com/science/article/pii/S037026931630692X",
+            "doi": "https://doi.org/10.1016/j.physletb.2016.11.029",
+            "issn": "0370-2693",
+            "year": "2017",
+            "pages": "157-162",
+            "volume": "764",
+            "journal": "Phys. Lett. B",
+            "title": "μ−–e+ conversion in upcoming LFV experiments",
+            "ENTRYTYPE": "article"
+        },
+        "PhysRevC.70.065501": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevC.70.065501",
+            "doi": "10.1103/PhysRevC.70.065501",
+            "publisher": "American Physical Society",
+            "month": "Dec",
+            "year": "2004",
+            "numpages": "14",
+            "pages": "065501",
+            "issue": "6",
+            "volume": "70",
+            "journal": "Phys. Rev. C",
+            "author": "Domin, P. and Kovalenko, S. and Faessler, Amand and \\ifmmode \\check{S}\\else \\v{S}\\fi{}imkovic, F.",
+            "title": "Nuclear $({\\ensuremath{\\mu}}^{\\ensuremath{-}},{e}^{+})$ conversion mediated by Majorana neutrinos",
+            "ENTRYTYPE": "article"
+        },
+        "PhysRevD.95.115010": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.95.115010",
+            "doi": "10.1103/PhysRevD.95.115010",
+            "publisher": "American Physical Society",
+            "month": "Jun",
+            "year": "2017",
+            "numpages": "14",
+            "pages": "115010",
+            "issue": "11",
+            "volume": "95",
+            "journal": "Phys. Rev. D",
+            "author": "Berryman, Jeffrey M. and de Gouv\\^ea, Andr\\'e and Kelly, Kevin J. and Kobach, Andrew",
+            "title": "Lepton-number-violating searches for muon to positron conversion",
+            "ENTRYTYPE": "article"
+        },
+        "PhysRevD.25.2951": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevD.25.2951",
+            "doi": "10.1103/PhysRevD.25.2951",
+            "publisher": "American Physical Society",
+            "month": "Jun",
+            "year": "1982",
+            "numpages": "0",
+            "pages": "2951--2954",
+            "issue": "11",
+            "volume": "25",
+            "journal": "Phys. Rev. D",
+            "author": "Schechter, J. and Valle, J. W. F.",
+            "title": "Neutrinoless double-$\\ensuremath{\\beta}$ decay in SU(2)$\\times$U(1) theories",
+            "ENTRYTYPE": "article"
+        },
+        "TAKASUGI1984372": {
+            "author": "Eiichi Takasugi",
+            "url": "https://www.sciencedirect.com/science/article/pii/037026938490426X",
+            "doi": "https://doi.org/10.1016/0370-2693(84)90426-X",
+            "issn": "0370-2693",
+            "year": "1984",
+            "pages": "372-376",
+            "number": "4",
+            "volume": "149",
+            "journal": "Physics Letters B",
+            "title": "Can the neutrinoless double beta decay take place in the case of Dirac neutrinos?",
+            "ENTRYTYPE": "article"
+        },
+        "HIRSCH2006106": {
+            "keywords": "New physics, Lepton flavor violation, Neutrino",
+            "author": "Martin Hirsch and Sergey Kovalenko and Ivan Schmidt",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0370269306011579",
+            "doi": "https://doi.org/10.1016/j.physletb.2006.09.012",
+            "issn": "0370-2693",
+            "year": "2006",
+            "pages": "106-110",
+            "number": "1",
+            "volume": "642",
+            "journal": "Physics Letters B",
+            "title": "Extended Black box theorem for lepton number and flavor violating processes",
+            "ENTRYTYPE": "article"
+        },
+        "Engel_2017": {
+            "journal": "Reports on Progress in Physics",
+            "title": "Status and future of nuclear matrix elements for neutrinoless double-beta decay: a review",
+            "author": "Jonathan Engel and Javier Men{\\'{e}}ndez",
+            "pages": "046301",
+            "number": "4",
+            "volume": "80",
+            "publisher": "{IOP} Publishing",
+            "month": "mar",
+            "year": "2017",
+            "url": "https://doi.org/10.1088/1361-6633/aa5bc5",
+            "doi": "10.1088/1361-6633/aa5bc5",
+            "ENTRYTYPE": "article"
+        },
+        "NISHIGUCHI2017269": {
+            "abstract": "The COMET experiment at J-PARC aims to search for a lepton-flavour violating process of muon to electron conversion in a muonic atom, μ-e conversion, with a branching-ratio sensitivity of better than 10−16, 4 orders of magnitude better than the present limit, in order to explore the parameter region predicted by most of well-motivated theoretical models beyond the Standard Model. The need for this sensitivity places several stringent requirements on the detector development. The experiment requires to detect the monochromatic electron of 105MeV, the momentum resolution is primarily limited by the multiple scattering effect for this momentum region. Thus we need the very light material detector in order to achieve an excellent momentum resolution, better than 2%, for 100MeV region. In order to fulfil such a requirement, the thin-wall straw-tube planar tracker has been developed by an extremely light material which is operational in vacuum. The COMET straw tracker consists of 9.8mm diameter straw tube, longer than 1m length, with 20-μm-thick Mylar foil and 70-nm-thick aluminium deposition. Currently even thinner and smaller, 12μm thick and 5mm diameter, straw is under development by the ultrasonic welding technique.",
+            "keywords": "Gas detector, Straw chamber, Tracker, Low-mass detector",
+            "author": "H. Nishiguchi and P. Evtoukhovitch and Y. Fujii and E. Hamada and S. Mihara and A. Moiseenko and K. Noguchi and K. Oishi and S. Tanaka and J. Tojo and Z. Tsamalaidze and N. Tsverava and K. Ueno and A. Volkov",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0168900216306465",
+            "doi": "https://doi.org/10.1016/j.nima.2016.06.082",
+            "issn": "0168-9002",
+            "note": "Proceedings of the Vienna Conference on Instrumentation 2016",
+            "year": "2017",
+            "pages": "269-272",
+            "volume": "845",
+            "journal": "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment",
+            "title": "Development of an extremely thin-wall straw tracker operational in vacuum – The COMET straw tracker system",
+            "ENTRYTYPE": "article"
+        },
+        "VOLKOV2021165242": {
+            "abstract": "COMET (Coherent Muon to Electron Transition, J-PARC, Japan) is one of the experiments that studies extensions of the Standard Model (SM) of elementary particle physics. The main purpose of the COMET experiment is to search for charged lepton flavor violating neutrinoless conversion of muons into electrons in the field of a nucleus (μ–e conversion, μ–N → e–N). The goal is to achieve a sensitivity to the branching ratio superior to 10−17, that four orders of magnitude smaller than the present limit. In the experiment a straw detector will be used to measure the momentum of the signal electrons from the μ–e conversion. In order to satisfy the requirements of the momentum measurements, we plan to develop a planar tracking device consisting of thin-wall straws made with an extremely light material to reduce multiple scattering and that is capable of operation in vacuum. Research the mechanical properties of straws will allow us to choose their optimal tension, to estimate the influence of the temperature and humidity, to assess the straws service life in the experiment, which we define as the tension relaxation time to the minimum working value.",
+            "keywords": "Welded straws, Test bench, Straw properties, Tension relaxation",
+            "author": "A. Volkov and P. Evtoukhovich and M. Kravchenko and Y. Kuno and S. Mihara and H. Nishiguchi and A. Pavlov and Z. Tsamalaidze",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0168900221002266",
+            "doi": "https://doi.org/10.1016/j.nima.2021.165242",
+            "issn": "0168-9002",
+            "year": "2021",
+            "pages": "165242",
+            "volume": "1004",
+            "journal": "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment",
+            "title": "Properties of straw tubes for the tracking detector of the COMET experiment",
+            "ENTRYTYPE": "article"
+        },
+        "WU2021165756": {
+            "abstract": "The performance of a small prototype of a cylindrical drift chamber (CDC) used in the COMET Phase-I experiment was studied by using an electron beam. The prototype chamber was constructed with alternating all-stereo wire configuration and operated with the He−iC4H10(90/10) gas mixture without a magnetic field. The drift space–time relation, drift velocity, dE/dx resolution, hit efficiency, and spatial resolution as a function of distance from the wire were investigated. The average spatial resolution of 150 μm with the hit efficiency of 99% was obtained at applied voltages higher than 1800V. We have demonstrated that the design and gas mixture of the prototype match the operation of the COMET CDC.",
+            "keywords": "Drift chamber, Helium-based gas, Spatial resolution, COMET",
+            "author": "C. Wu and T.S. Wong and Y. Kuno and M. Moritsu and Y. Nakazawa and A. Sato and H. Sakamoto and N.H. Tran and M.L. Wong and H. Yoshida and T. Yamane and J. Zhang",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0168900221007415",
+            "doi": "https://doi.org/10.1016/j.nima.2021.165756",
+            "issn": "0168-9002",
+            "year": "2021",
+            "pages": "165756",
+            "volume": "1015",
+            "journal": "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment",
+            "title": "Test of a small prototype of the COMET cylindrical drift chamber",
+            "ENTRYTYPE": "article"
+        },
+        "Moritsu:2020it": {
+            "pages": "128",
+            "volume": "EPS-HEP2019",
+            "year": "2020",
+            "journal": "PoS",
+            "doi": "10.22323/1.364.0128",
+            "title": "{Commissioning of the Cylindrical Drift Chamber for the COMET experiment}",
+            "author": "Moritsu, Manabu  and  KUNO, YOSHITAKA  and  Matsuda, Yugo  and  Nakazawa, Yu  and  Ohta, Saki  and  Sakamoto, Hideyuki  and  Sato, Akira  and  Wong, Ming Liang  and  Wong, TingSam  and  Wu, Chen  and  Yoshida, Hisataka  and  Jiang, Xiaoshan  and  Li, Hai-bo  and  Nakatsugawa, Yohei  and  Zhang, Jie",
+            "ENTRYTYPE": "article"
+        },
+        "Moritsu:2019Wl": {
+            "pages": "538",
+            "volume": "ICHEP2018",
+            "year": "2019",
+            "journal": "PoS",
+            "doi": "10.22323/1.340.0538",
+            "title": "{Construction and performance tests of the COMET CDC}",
+            "author": "Moritsu, Manabu  and  KUNO, YOSHITAKA  and  Matsuda, Yugo  and  Nakazawa, Yu  and  Okinak, Kaori  and  Sakamoto, Hideyuki  and  Sato, Akira  and  Wong, Ming Liang  and  Wong, TingSam  and  Wu, Chen  and  Yamane, Takahito  and  Yoshida, Hisataka  and  Li, Hai-bo  and  Xiaoshan, Jiang  and  Zhang, Jie",
+            "ENTRYTYPE": "article"
+        },
+        "Kamioka:2023xob": {
+            "year": "2024",
+            "pages": "008",
+            "volume": "Muon4Future2023",
+            "journal": "PoS",
+            "doi": "10.22323/1.452.0008",
+            "title": "{Muon cooling at J-PARC}",
+            "collaboration": "J-PARC muon $g\\ensuremath{-}2$/EDM",
+            "author": "Kamioka, Shusei",
+            "ENTRYTYPE": "article"
+        },
+        "MECO": {
+            "year": "1989",
+            "pages": "384--385",
+            "volume": "49",
+            "journal": "Sov. J. Nucl. Phys.",
+            "author": "Dzhilkibaev, R.M. and Lobashev, V.M.",
+            "ENTRYTYPE": "article"
+        },
+        "Iinuma:2011zz": {
+            "year": "2011",
+            "pages": "012032",
+            "volume": "295",
+            "journal": "J. Phys. Conf. Ser.",
+            "doi": "10.1088/1742-6596/295/1/012032",
+            "collaboration": "J-PARC muon $g\\ensuremath{-}2$/EDM",
+            "editor": "Stroher, Hans and Rathmann, Frank",
+            "author": "Iinuma, Hiromi",
+            "ENTRYTYPE": "article"
+        },
+        "SINDRUM:1987nra": {
+            "year": "1988",
+            "pages": "1--6",
+            "volume": "299",
+            "journal": "Nucl. Phys. B",
+            "doi": "10.1016/0550-3213(88)90462-2",
+            "reportnumber": "SIN-PR-87-09",
+            "collaboration": "SINDRUM",
+            "author": "Bellgardt, U. and others",
+            "ENTRYTYPE": "article"
+        },
+        "czarnecki": {
+            "author": "Robert Szafron and Andrzej Czarnecki",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0370269315009399",
+            "doi": "https://doi.org/10.1016/j.physletb.2015.12.008",
+            "issn": "0370-2693",
+            "year": "2016",
+            "pages": "61-64",
+            "volume": "753",
+            "journal": "Phys. Lett. B",
+            "ENTRYTYPE": "article"
+        },
+        "COMET:2018auw": {
+            "year": "2020",
+            "pages": "033C01",
+            "number": "3",
+            "volume": "2020",
+            "journal": "PTEP",
+            "doi": "10.1093/ptep/ptz125",
+            "primaryclass": "physics.ins-det",
+            "archiveprefix": "arXiv",
+            "eprint": "1812.09018",
+            "collaboration": "COMET",
+            "author": "Abramishvili, R. and others",
+            "ENTRYTYPE": "article"
+        },
+        "Aoyama_2020": {
+            "pages": "1–166",
+            "month": "December",
+            "year": "2020",
+            "author": "Aoyama, T. and others",
+            "publisher": "Elsevier BV",
+            "journal": "Physics Reports",
+            "doi": "10.1016/j.physrep.2020.07.006",
+            "url": "http://dx.doi.org/10.1016/j.physrep.2020.07.006",
+            "issn": "0370-1573",
+            "volume": "887",
+            "ENTRYTYPE": "article"
+        },
+        "Tomizawa:IPAC2019-WEPMP010": {
+            "note": "https://doi.org/10.18429/JACoW-IPAC2019-WEPMP010",
+            "url": "http://jacow.org/ipac2019/papers/wepmp010.pdf",
+            "doi": "doi:10.18429/JACoW-IPAC2019-WEPMP010",
+            "isbn": "978-3-95450-208-0",
+            "year": "2019",
+            "month": "Jun.",
+            "address": "Geneva, Switzerland",
+            "publisher": "JACoW Publishing",
+            "number": "10",
+            "series": "International Particle Accelerator Conference",
+            "venue": "Melbourne, Australia",
+            "keywords": "kicker, extraction, timing, injection, electron",
+            "language": "english",
+            "paper": "WEPMP010",
+            "pages": "2322--2325",
+            "booktitle": "Proc. 10th International Particle Accelerator Conference (IPAC'19),\nMelbourne, Australia, 19-24 May 2019",
+            "title": "8 {G}ev {S}low {E}xtraction {B}eam {T}est for {M}uon to {E}lectron {C}onversion {S}earch {E}xperiment at {J-PARC}",
+            "author": "M. Tomizawa and others",
+            "ENTRYTYPE": "inproceedings"
+        },
+        "Nishiguchi:IPAC2019-FRXXPLS2": {
+            "note": "https://doi.org/10.18429/JACoW-IPAC2019-FRXXPLS2",
+            "url": "http://jacow.org/ipac2019/papers/frxxpls2.pdf",
+            "doi": "doi:10.18429/JACoW-IPAC2019-FRXXPLS2",
+            "isbn": "978-3-95450-208-0",
+            "year": "2019",
+            "month": "Jun.",
+            "address": "Geneva, Switzerland",
+            "publisher": "JACoW Publishing",
+            "number": "10",
+            "series": "International Particle Accelerator Conference",
+            "venue": "Melbourne, Australia",
+            "keywords": "proton, experiment, extraction, timing, kicker",
+            "language": "english",
+            "paper": "FRXXPLS2",
+            "pages": "4372--4375",
+            "booktitle": "Proc. 10th International Particle Accelerator Conference (IPAC'19),\nMelbourne, Australia, 19-24 May 2019",
+            "title": "{E}xtinction {M}easurement of {J-PARC} {MR} with 8 {G}e{V} {P}roton {B}eam for the {N}ew {M}uon{-}to{-E}lectron {C}onversion {S}earch {E}xperiment {-} {COMET}",
+            "author": "H. Nishiguchi and others",
+            "ENTRYTYPE": "inproceedings"
+        },
+        "cometphaseIILoI": {
+            "note": "(submitted to the J-PARC Physics Advisory Committee)",
+            "url": "https://lib-extopc.kek.jp/preprints/PDF/2009/0924/0924011.pdf",
+            "volume": "2009-10",
+            "year": "2009",
+            "journal": "KEK Report",
+            "title": "{Conceptual Design Report for Experimental Search for Lepton Flavor Violating $\\mu \\to e$ Conversion at Sensitivity of $10^{-16}$   with a Slow-Extracted Bunched Proton Beam}",
+            "collaboration": "{COMET}",
+            "author": "Cui, Y. G. and others",
+            "ENTRYTYPE": "article"
+        },
+        "cometphaseIIthesis": {
+            "url": "http://hdl.handle.net/10044/1/45365",
+            "doi": "https://doi.org/10.25560/45365",
+            "month": "March",
+            "address": "London, UK",
+            "year": "2017",
+            "school": "Imperial College London",
+            "title": "Sensitivity and background estimates for phase-II of the COMET experiment",
+            "author": "Krikler, Benjamin Edward",
+            "ENTRYTYPE": "phdthesis"
+        },
+        "Hline": {
+            "eprint": "https://academic.oup.com/ptep/article-pdf/2018/11/113G01/26732914/pty116.pdf",
+            "pages": "113G01",
+            "note": "113G01",
+            "url": "https://doi.org/10.1093/ptep/pty116",
+            "doi": "10.1093/ptep/pty116",
+            "issn": "2050-3911",
+            "abstract": "{Power upgrades of accelerators and the development of new beamlines have prompted high-precision measurements to be updated and reveal new phenomena. Several accelerators operate in the mega-watt regime, and a number of experiments are planned for the future, to search for evidence of new physics beyond the standard model by investigating events relevant to secondary particles. Several beamlines will be constructed based on new concepts in high-power proton drivers, i.e., meson factories. These beamlines will transport secondary particles, namely muons, with higher efficiency than conventional beamlines, and are usually dedicated to specific experiments. In this article, we introduce a new beamline concept that can produce a high-intensity muon beam with a wide tunable range of momentum, for application to a wide variety of studies. A new muon beamline based on this concept is under construction in the Japan Proton Accelerator Research Complex (J-PARC). This beamline is characterized by general versatility, and produces high-intensity muon beams for several experiments, which require different beam and experimental conditions.}",
+            "month": "11",
+            "year": "2018",
+            "number": "11",
+            "volume": "2018",
+            "journal": "Progress of Theoretical and Experimental Physics",
+            "title": "{New concept for a large-acceptance general-purpose muon beamline}",
+            "author": "Kawamura, Naritoshi and Aoki, Masaharu and Doornbos, Jacob and Mibe, Tsutomu and Miyake, Yasuhiro and Morimoto, Fumiaki and Nakatsugawa, Yohei and Otani, Masashi and Saito, Naohito and Seiya, Yoshihiro and Shimomura, Koichiro and Toyoda, Akihisa and Yamazaki, Takayuki",
+            "ENTRYTYPE": "article"
+        },
+        "MWPC1": {
+            "eprint": "https://academic.oup.com/ptep/article-pdf/2017/2/023C01/10437290/ptw193.pdf",
+            "pages": "023C01",
+            "note": "023C01",
+            "url": "https://doi.org/10.1093/ptep/ptw193",
+            "doi": "10.1093/ptep/ptw193",
+            "issn": "2050-3911",
+            "abstract": "{A new experiment, called DeeMe, which is designed to search for μ−e conversions with a sensitivity of O(10−14), is in preparation at the Japan Proton Accelerator Research Complex (J-PARC). It utilizes a high-quality pulsed proton beam from the Rapid Cycling Synchrotron at J-PARC. The detector for DeeMe must tolerate large pulses of prompt charged particles whose instantaneous hit rate is as large as 70 GHz mm−2 in a time width of 200 ns, and detect a single electron that arrives with delayed timing on the order of microseconds. A special wire chamber has been developed with a new dynamic gain control technique that reduces space charge effects. In this paper, we detail the novel detector scheme and operation verification.}",
+            "month": "02",
+            "year": "2017",
+            "number": "2",
+            "volume": "2017",
+            "journal": "Progress of Theoretical and Experimental Physics",
+            "title": "{A fast high-voltage switching multiwire proportional chamber}",
+            "author": "Natori, H. and Teshima, N. and Aoki, M. and Nishiguchi, H. and Nguyen, T. D. and Takezaki, Y. and Furuya, Y. and Ito, S. and Mihara, S. and Nagao, D. and Nakatsugawa, Y. and Nguyen, T. M. and Seiya, Y. and Shimizu, K. and Yamamoto, K.",
+            "ENTRYTYPE": "article"
+        },
+        "MWPC2": {
+            "abstract": "The DeeMe experiment to search for muon-to-electron conversions with a sensitivity 10–100 times better than those achieved by previous experiments is in preparation at the Japan Proton Accelerator Research Complex. The magnetic spectrometer used by the DeeMe experiment consists of an electromagnet and four multiwire proportional chambers (MWPCs). The newly developed MWPCs are operated with a high voltage (HV) switching technique and have good burst-hit tolerance. In this article, the final designs of the MWPCs, amplifiers for readout, and HV switching modules are described. Additionally, some results of MWPC performance evaluation are presented.",
+            "keywords": "Multiwire proportional chamber, High voltage switching, Magnetic spectrometer, J-PARC MLF",
+            "author": "N. Teshima and M. Aoki and Y. Higashino and H. Ikeuchi and K. Komukai and D. Nagao and Y. Nakatsugawa and H. Natori and Y. Seiya and N.M. Truong and K. Yamamoto",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0168900221002126",
+            "doi": "https://doi.org/10.1016/j.nima.2021.165228",
+            "issn": "0168-9002",
+            "year": "2021",
+            "pages": "165228",
+            "volume": "999",
+            "journal": "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment",
+            "title": "Development of a multiwire proportional chamber with good tolerance to burst hits",
+            "ENTRYTYPE": "article"
+        },
+        "MEGII:2023ltw": {
+            "note": "[Erratum: Eur.Phys.J.C 84, 1042 (2024)]",
+            "year": "2024",
+            "pages": "216",
+            "number": "3",
+            "volume": "84",
+            "journal": "Eur. Phys. J. C",
+            "doi": "10.1140/epjc/s10052-024-12416-2",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2310.12614",
+            "collaboration": "MEG II",
+            "author": "Afanaciev, K. and others",
+            "ENTRYTYPE": "article"
+        },
+        "illinois": {
+            "howpublished": "\\url{https://muon-gm2-theory.illinois.edu/}",
+            "ENTRYTYPE": "misc"
+        },
+        "AMF": {
+            "note": "NuFact2024-08",
+            "url": "https://arxiv.org/abs/2501.15664",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2501.15664",
+            "year": "2025",
+            "author": "Sophie Middleton",
+            "ENTRYTYPE": "misc"
+        },
+        "Driutti:2024vtg": {
+            "year": "2024",
+            "pages": "169876",
+            "volume": "1069",
+            "journal": "Nucl. Instrum. Meth. A",
+            "doi": "10.1016/j.nima.2024.169876",
+            "title": "{The detector for the MUonE experiment at CERN}",
+            "author": "Driutti, Anna",
+            "ENTRYTYPE": "article"
+        },
+        "BELLGARDT19881": {
+            "author": "U. Bellgardt and others",
+            "url": "https://www.sciencedirect.com/science/article/pii/0550321388904622",
+            "doi": "https://doi.org/10.1016/0550-3213(88)90462-2",
+            "issn": "0550-3213",
+            "year": "1988",
+            "pages": "1-6",
+            "number": "1",
+            "volume": "299",
+            "journal": "Nuc. Phys. B",
+            "ENTRYTYPE": "article"
+        },
+        "Abbiendi:2016xup": {
+            "year": "2017",
+            "pages": "139",
+            "number": "3",
+            "volume": "77",
+            "journal": "Eur. Phys. J. C",
+            "doi": "10.1140/epjc/s10052-017-4633-z",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "1609.08987",
+            "author": "Abbiendi, G. and others",
+            "ENTRYTYPE": "article"
+        },
+        "p5": {
+            "note": "\\url{https://www.citedrive.com/overleaf} [Accessed: (8 December 2023)]",
+            "title": "CiteDrive brings reference management to Overleaf",
+            "year": "2023",
+            "author": "P5",
+            "ENTRYTYPE": "misc"
+        },
+        "mace": {
+            "url": "https://arxiv.org/abs/2203.11406",
+            "primaryclass": "hep-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "2203.11406",
+            "year": "2022",
+            "author": "Ai-Yu Bai and others",
+            "ENTRYTYPE": "misc"
+        },
+        "hoeferkamp2022novelsensorsparticletracking": {
+            "url": "https://arxiv.org/abs/2202.11828",
+            "primaryclass": "physics.ins-det",
+            "archiveprefix": "arXiv",
+            "eprint": "2202.11828",
+            "year": "2022",
+            "author": "M. R. Hoeferkamp and others",
+            "ENTRYTYPE": "misc"
+        },
+        "hesketh2022mu3e": {
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2204.00001",
+            "year": "2022",
+            "author": "Gavin Hesketh and Sean Hughes and Ann-Kathrin Perrevoort and Nikolaos Rompotis",
+            "title": "The Mu3e Experiment",
+            "ENTRYTYPE": "misc"
+        },
+        "MEGII:2021fah": {
+            "year": "2021",
+            "pages": "1591",
+            "number": "9",
+            "volume": "13",
+            "journal": "Symmetry",
+            "doi": "10.3390/sym13091591",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2107.10767",
+            "collaboration": "MEG II",
+            "author": "Baldini, Alessandro M. and others",
+            "ENTRYTYPE": "article"
+        },
+        "suzuki": {
+            "url": "https://link.aps.org/doi/10.1103/PhysRevC.35.2212",
+            "doi": "10.1103/PhysRevC.35.2212",
+            "publisher": "American Physical Society",
+            "month": "Jun",
+            "year": "1987",
+            "numpages": "0",
+            "pages": "2212--2224",
+            "issue": "6",
+            "volume": "35",
+            "journal": "Phys. Rev. C",
+            "author": "Suzuki, T. and Measday, D. F. and Roalsvig, J. P.",
+            "title": "Total nuclear capture rates for negative muons",
+            "ENTRYTYPE": "article"
+        },
+        "compressor:LOI": {
+            "year": "2021",
+            "author": "Prebys, E. and Bernstein, R. and Pasternak, J.",
+            "url": "{https://www.snowmass21.org/docs/files/summaries/AF/SNOWMASS21-AF5_AF0-RF5_RF0_Prebys-071.pdf}",
+            "title": "{Letter of Interest: Bunch Compressor for the PIP-II Linac}",
+            "ENTRYTYPE": "misc"
+        },
+        "Witte:2012zza": {
+            "year": "2012",
+            "pages": "79--81",
+            "volume": "1205201",
+            "journal": "Conf. Proc. C",
+            "reportnumber": "IPAC-2012-MOEPPB003",
+            "editor": "Suller, Vic",
+            "author": "Witte, H. and others",
+            "ENTRYTYPE": "article"
+        },
+        "Sato:2008zze": {
+            "year": "2008",
+            "pages": "THPP007",
+            "volume": "0806233",
+            "journal": "Conf. Proc. C",
+            "reportnumber": "EPAC08-THPP007",
+            "title": "{Six-sector FFAG Ring to Demonstrate Bunch Rotation for PRISM}",
+            "editor": "Andrian, Ivan and Petit-Jean-Genaz, Christine",
+            "author": "Sato, A. and others",
+            "ENTRYTYPE": "article"
+        },
+        "Alekou:2013eta": {
+            "year": "2013",
+            "month": "10",
+            "primaryclass": "physics.acc-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "1310.0804",
+            "booktitle": "{Community Summer Study 2013}: {Snowmass on the Mississippi}",
+            "title": "{Accelerator system for the PRISM based muon to electron conversion experiment}",
+            "author": "Alekou, A. and others",
+            "ENTRYTYPE": "inproceedings"
+        },
+        "Pasternak:2010zz": {
+            "year": "2010",
+            "pages": "WEPE056",
+            "volume": "100523",
+            "journal": "Conf. Proc. C",
+            "reportnumber": "IPAC-2010-WEPE056, FERMILAB-CONF-10-761-APC",
+            "title": "{Accelerator and Particle Physics Research for the Next Generation Muon to Electron Conversion Experiment - the PRISM Task Force}",
+            "editor": "Noda, Akira and Petit-Jean-Genaz, Christine and Schaa, Volker R. W. and Shirai, Toshiyuki and Shirakawa, Akihiro",
+            "author": "Pasternak, Jaroslaw and others",
+            "ENTRYTYPE": "article"
+        },
+        "prism": {
+            "year": "2005",
+            "pages": "376--378",
+            "volume": "149",
+            "journal": "Nucl. Phys. B Proc. Suppl.",
+            "doi": "10.1016/j.nuclphysbps.2005.05.073",
+            "title": "{PRISM/PRIME}",
+            "editor": "Aoki, M. and Iwashita, Y. and Kuze, M.",
+            "author": "Kuno, Y.",
+            "ENTRYTYPE": "article"
+        },
+        "CGroup:2022tli": {
+            "year": "2022",
+            "month": "3",
+            "reportnumber": "FERMILAB-CONF-22-314-AD-LBNF-PPD",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2203.08278",
+            "booktitle": "{Snowmass 2021}",
+            "title": "{A New Charged Lepton Flavor Violation Program at Fermilab}",
+            "collaboration": "C. Group",
+            "author": "Aoki, M. and others",
+            "ENTRYTYPE": "inproceedings"
+        },
+        "corrodi2023workshop": {
+            "year": "2023",
+            "month": "9",
+            "reportnumber": "FERMILAB-CONF-23-464-PPD, CALT-TH-2023-036",
+            "primaryclass": "hep-ex",
+            "archiveprefix": "arXiv",
+            "eprint": "2309.05933",
+            "title": "{Workshop on a future muon program at FNAL}",
+            "author": "Corrodi, S. and others",
+            "ENTRYTYPE": "article"
+        },
+        "Leo": {
+            "year": "2024",
+            "month": "1",
+            "primaryclass": "hep-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "2401.15025",
+            "author": "Borrel, L\\'eo and Hitlin, David G. and Middleton, Sophie",
+            "ENTRYTYPE": "article"
+        },
+        "Davidson:2022nnl": {
+            "year": "2022",
+            "pages": "836",
+            "number": "9",
+            "volume": "82",
+            "journal": "Eur. Phys. J. C",
+            "doi": "10.1140/epjc/s10052-022-10773-4",
+            "primaryclass": "hep-ph",
+            "archiveprefix": "arXiv",
+            "eprint": "2204.00564",
+            "author": "Davidson, Sacha and Echenard, Bertrand",
+            "ENTRYTYPE": "article"
+        },
+        "NucleusDependence": {
+            "abstract": "The experimental sensitivity to μ→e conversion on nuclei is set to improve by four orders of magnitude in coming years. However, various operator coefficients add coherently in the amplitude for μ→econversion, weighted by nucleus-dependent functions, and therefore in the event of a detection, identifying the relevant new physics scenarios could be difficult. Using a representation of the nuclear targets as vectors in coefficient space, whose components are the weighting functions, we quantify the expectation that different nuclear targets could give different constraints. We show that all but two combinations of the 10 Spin-Independent (SI) coefficients could be constrained by future measurements, but discriminating among the axial, tensor and pseudoscalar operators that contribute to the Spin-Dependent (SD) process would require dedicated nuclear calculations. We anticipate that μ→econversion could constrain 10 to 14 combinations of coefficients; if μ→eγ and μ→ee¯e constrain eight more, that leaves 60 to 64 “flat directions” in the basis of QED × QCD-invariant operators which describe μ→e flavour change below mW.",
+            "author": "Sacha Davidson and Yoshitaka Kuno and Masato Yamanaka",
+            "url": "https://www.sciencedirect.com/science/article/pii/S0370269319300589",
+            "doi": "https://doi.org/10.1016/j.physletb.2019.01.042",
+            "issn": "0370-2693",
+            "year": "2019",
+            "pages": "380-388",
+            "volume": "790",
+            "journal": "Physics Letters B",
+            "title": "Selecting $\\mu to e$ conversion targets to distinguish lepton flavour-changing operators",
+            "ENTRYTYPE": "article"
+        },
+        "FADC": {
+            "doi": "10.1109/TNS.2018.2861880",
+            "pages": "2650-2656",
+            "number": "9",
+            "volume": "65",
+            "year": "2018",
+            "title": "Real-Time Lossless Compression of Waveforms Using an FPGA",
+            "journal": "IEEE Transactions on Nuclear Science",
+            "author": "Truong, N. M. and Aoki, M. and Igarashi, Y. and Saito, M. and Ito, S. and Nagao, D. and Nakatsugawa, Y. and Natori, H. and Seiya, Y. and Teshima, N. and Yamamoto, K.",
+            "ENTRYTYPE": "article"
+        }
+    }
+}

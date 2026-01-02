@@ -1,0 +1,479 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{37}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Akimoto et~al\mbox{.}(2022)]%
+        {akimoto2022diverse}
+\bibfield{author}{\bibinfo{person}{Naofumi Akimoto}, \bibinfo{person}{Yuhi
+  Matsuo}, {and} \bibinfo{person}{Yoshimitsu Aoki}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Diverse Plausible 360-Degree Image Outpainting for
+  Efficient 3DCG Background Creation}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{11441--11450}.
+\newblock
+
+
+\bibitem[Barron and Malik(2013)]%
+        {barron2013intrinsic}
+\bibfield{author}{\bibinfo{person}{Jonathan~T Barron} {and}
+  \bibinfo{person}{Jitendra Malik}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Intrinsic scene properties from a single {RGB-D}
+  image}. In \bibinfo{booktitle}{\emph{Proc.~CVPR}}.
+\newblock
+
+
+\bibitem[Cho et~al\mbox{.}(2014)]%
+        {cho2014learning}
+\bibfield{author}{\bibinfo{person}{Kyunghyun Cho}, \bibinfo{person}{Bart
+  Van~Merri{\"e}nboer}, \bibinfo{person}{Caglar Gulcehre},
+  \bibinfo{person}{Dzmitry Bahdanau}, \bibinfo{person}{Fethi Bougares},
+  \bibinfo{person}{Holger Schwenk}, {and} \bibinfo{person}{Yoshua Bengio}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Learning phrase representations using RNN
+  encoder-decoder for statistical machine translation}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1406.1078}}
+  (\bibinfo{year}{2014}).
+\newblock
+
+
+\bibitem[Choy et~al\mbox{.}(2016)]%
+        {choy20163D2N2}
+\bibfield{author}{\bibinfo{person}{Christopher~B Choy}, \bibinfo{person}{Danfei
+  Xu}, \bibinfo{person}{JunYoung Gwak}, \bibinfo{person}{Kevin Chen}, {and}
+  \bibinfo{person}{Silvio Savarese}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{3d-r2n2: A unified approach for single and
+  multi-view 3d object reconstruction}. In
+  \bibinfo{booktitle}{\emph{Proc.~ECCV}}.
+\newblock
+
+
+\bibitem[Dastjerdi et~al\mbox{.}(2022)]%
+        {dastjerdi2022guided}
+\bibfield{author}{\bibinfo{person}{Mohammad Reza~Karimi Dastjerdi},
+  \bibinfo{person}{Yannick Hold-Geoffroy}, \bibinfo{person}{Jonathan
+  Eisenmann}, \bibinfo{person}{Siavash Khodadadeh}, {and}
+  \bibinfo{person}{Jean-Fran{\c{c}}ois Lalonde}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Guided Co-Modulated GAN for 360
+  $\{$$\backslash$deg$\}$ Field of View Extrapolation}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2204.07286}}
+  (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Debevec(1998)]%
+        {debevec1998rendering}
+\bibfield{author}{\bibinfo{person}{Paul Debevec}.}
+  \bibinfo{year}{1998}\natexlab{}.
+\newblock \showarticletitle{Rendering synthetic objects into real scenes:
+  Bridging traditional and image-based graphics with global illumination and
+  high dynamic range photography}. In \bibinfo{booktitle}{\emph{Proc. SIGGRAPH
+  98}}. \bibinfo{pages}{189--198}.
+\newblock
+
+
+\bibitem[Gardner et~al\mbox{.}(2019)]%
+        {gardner2019parametric}
+\bibfield{author}{\bibinfo{person}{Marc-Andr\'{e} Gardner},
+  \bibinfo{person}{Yannick Hold-Geoffroy}, \bibinfo{person}{Kalyan Sunkavalli},
+  \bibinfo{person}{Christian Gagn\'{e}}, {and}
+  \bibinfo{person}{Jean-Fran\c{c}ois Lalonde}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Deep Parametric Indoor Lighting Estimation}. In
+  \bibinfo{booktitle}{\emph{Proc.~ICCV}}.
+\newblock
+
+
+\bibitem[Gardner et~al\mbox{.}(2017)]%
+        {gardner2017indoor}
+\bibfield{author}{\bibinfo{person}{Marc-Andr{\'e} Gardner},
+  \bibinfo{person}{Kalyan Sunkavalli}, \bibinfo{person}{Ersin Yumer},
+  \bibinfo{person}{Xiaohui Shen}, \bibinfo{person}{Emiliano Gambaretto},
+  \bibinfo{person}{Christian Gagn{\'e}}, {and}
+  \bibinfo{person}{Jean-Fran{\c{c}}ois Lalonde}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Learning to predict indoor illumination from a
+  single image}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Graphics}} \bibinfo{volume}{9},
+  \bibinfo{number}{4} (\bibinfo{year}{2017}).
+\newblock
+
+
+\bibitem[Garon et~al\mbox{.}(2019)]%
+        {garon2019fast}
+\bibfield{author}{\bibinfo{person}{Mathieu Garon}, \bibinfo{person}{Kalyan
+  Sunkavalli}, \bibinfo{person}{Sunil Hadap}, \bibinfo{person}{Nathan Carr},
+  {and} \bibinfo{person}{Jean-Fran{\c{c}}ois Lalonde}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Fast Spatially-Varying Indoor Lighting Estimation}.
+  In \bibinfo{booktitle}{\emph{Proc.~CVPR}}.
+\newblock
+
+
+\bibitem[Karis(2013)]%
+        {brdfModel}
+\bibfield{author}{\bibinfo{person}{Brian Karis}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Real shading in Unreal Engine 4}.
+\newblock \bibinfo{journal}{\emph{SIGGRAPH 2013 Courses: Physically Based
+  Shading Theory Practice}} (\bibinfo{year}{2013}).
+\newblock
+
+
+\bibitem[Karsch et~al\mbox{.}(2014)]%
+        {karsch-tog-14}
+\bibfield{author}{\bibinfo{person}{Kevin Karsch}, \bibinfo{person}{Kalyan
+  Sunkavalli}, \bibinfo{person}{Sunil Hadap}, \bibinfo{person}{Nathan Carr},
+  \bibinfo{person}{Hailin Jin}, \bibinfo{person}{Rafael Fonte},
+  \bibinfo{person}{Michael Sittig}, {and} \bibinfo{person}{David Forsyth}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Automatic Scene Inference for 3D Object
+  Compositing}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Graphics}} (\bibinfo{year}{2014}),
+  \bibinfo{pages}{32:1--32:15}.
+\newblock
+
+
+\bibitem[Kingma and Ba(2014)]%
+        {adam}
+\bibfield{author}{\bibinfo{person}{Diederik Kingma} {and}
+  \bibinfo{person}{Jimmy Ba}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Adam: A method for stochastic optimization}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1412.6980}}
+  (\bibinfo{year}{2014}).
+\newblock
+
+
+\bibitem[LeGendre et~al\mbox{.}(2019)]%
+        {legendre2019deeplight}
+\bibfield{author}{\bibinfo{person}{Chloe LeGendre}, \bibinfo{person}{Wan-Chun
+  Ma}, \bibinfo{person}{Graham Fyffe}, \bibinfo{person}{John Flynn},
+  \bibinfo{person}{Laurent Charbonnel}, \bibinfo{person}{Jay Busch}, {and}
+  \bibinfo{person}{Paul Debevec}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Deeplight: Learning illumination for unconstrained
+  mobile mixed reality}. In \bibinfo{booktitle}{\emph{Proc.~CVPR}}.
+  \bibinfo{pages}{5918--5928}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2018)]%
+        {li2018interiornet}
+\bibfield{author}{\bibinfo{person}{Wenbin Li}, \bibinfo{person}{Sajad Saeedi},
+  \bibinfo{person}{John McCormac}, \bibinfo{person}{Ronald Clark},
+  \bibinfo{person}{Dimos Tzoumanikas}, \bibinfo{person}{Qing Ye},
+  \bibinfo{person}{Yuzhong Huang}, \bibinfo{person}{Rui Tang}, {and}
+  \bibinfo{person}{Stefan Leutenegger}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{InteriorNet: Mega-scale multi-sensor
+  photo-realistic indoor scenes dataset}. In
+  \bibinfo{booktitle}{\emph{Proc.~BMVC}}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2020a)]%
+        {li2020inverse}
+\bibfield{author}{\bibinfo{person}{Zhengqin Li}, \bibinfo{person}{Mohammad
+  Shafiei}, \bibinfo{person}{Ravi Ramamoorthi}, \bibinfo{person}{Kalyan
+  Sunkavalli}, {and} \bibinfo{person}{Manmohan Chandraker}.}
+  \bibinfo{year}{2020}\natexlab{a}.
+\newblock \showarticletitle{Inverse Rendering for Complex Indoor Scenes: Shape,
+  Spatially-Varying Lighting and {SVBRDF} from a Single Image}. In
+  \bibinfo{booktitle}{\emph{Proc.~CVPR}}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2022)]%
+        {li2022physically}
+\bibfield{author}{\bibinfo{person}{Zhengqin Li}, \bibinfo{person}{Jia Shi},
+  \bibinfo{person}{Sai Bi}, \bibinfo{person}{Rui Zhu}, \bibinfo{person}{Kalyan
+  Sunkavalli}, \bibinfo{person}{Milo{\v{s}} Ha{\v{s}}an},
+  \bibinfo{person}{Zexiang Xu}, \bibinfo{person}{Ravi Ramamoorthi}, {and}
+  \bibinfo{person}{Manmohan Chandraker}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Physically-Based Editing of Indoor Scene Lighting
+  from a Single Image}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:2205.09343}}
+  (\bibinfo{year}{2022}).
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2020b)]%
+        {li2020openrooms}
+\bibfield{author}{\bibinfo{person}{Zhengqin Li}, \bibinfo{person}{Ting-Wei Yu},
+  \bibinfo{person}{Shen Sang}, \bibinfo{person}{Sarah Wang},
+  \bibinfo{person}{Meng Song}, \bibinfo{person}{Yuhan Liu},
+  \bibinfo{person}{Yu-Ying Yeh}, \bibinfo{person}{Rui Zhu},
+  \bibinfo{person}{Nitesh Gundavarapu}, \bibinfo{person}{Jia Shi},
+  {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{b}.
+\newblock \showarticletitle{OpenRooms: An End-to-End Open Framework for
+  Photorealistic Indoor Scene Datasets}.
+\newblock \bibinfo{journal}{\emph{Proc.~CVPR}} (\bibinfo{year}{2020}).
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2019)]%
+        {liu2019neural}
+\bibfield{author}{\bibinfo{person}{Chao Liu}, \bibinfo{person}{Jinwei Gu},
+  \bibinfo{person}{Kihwan Kim}, \bibinfo{person}{Srinivasa~G Narasimhan}, {and}
+  \bibinfo{person}{Jan Kautz}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Neural rgb (r) d sensing: Depth and uncertainty
+  from a video camera}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{10986--10995}.
+\newblock
+
+
+\bibitem[Luo et~al\mbox{.}(2020)]%
+        {luo2020consistent}
+\bibfield{author}{\bibinfo{person}{Xuan Luo}, \bibinfo{person}{Jia-Bin Huang},
+  \bibinfo{person}{Richard Szeliski}, \bibinfo{person}{Kevin Matzen}, {and}
+  \bibinfo{person}{Johannes Kopf}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Consistent video depth estimation}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Graphics (ToG)}}
+  \bibinfo{volume}{39}, \bibinfo{number}{4} (\bibinfo{year}{2020}),
+  \bibinfo{pages}{71--1}.
+\newblock
+
+
+\bibitem[McCormac et~al\mbox{.}(2017)]%
+        {mccormac2017scenenet}
+\bibfield{author}{\bibinfo{person}{John McCormac}, \bibinfo{person}{Ankur
+  Handa}, \bibinfo{person}{Stefan Leutenegger}, {and} \bibinfo{person}{Andrew~J
+  Davison}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Scenenet rgb-d: Can 5m synthetic images beat
+  generic imagenet pre-training on indoor segmentation?}. In
+  \bibinfo{booktitle}{\emph{Proc.~ICCV}}. \bibinfo{pages}{2678--2687}.
+\newblock
+
+
+\bibitem[Niklaus et~al\mbox{.}(2019)]%
+        {niklaus20193d}
+\bibfield{author}{\bibinfo{person}{Simon Niklaus}, \bibinfo{person}{Long Mai},
+  \bibinfo{person}{Jimei Yang}, {and} \bibinfo{person}{Feng Liu}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{3d ken burns effect from a single image}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Graphics (ToG)}}
+  \bibinfo{volume}{38}, \bibinfo{number}{6} (\bibinfo{year}{2019}),
+  \bibinfo{pages}{1--15}.
+\newblock
+
+
+\bibitem[Ramamoorthi and Hanrahan(2001)]%
+        {ramamoorthi2001efficient}
+\bibfield{author}{\bibinfo{person}{Ravi Ramamoorthi} {and} \bibinfo{person}{Pat
+  Hanrahan}.} \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{An efficient representation for irradiance
+  environment maps}. In \bibinfo{booktitle}{\emph{ACM Trans. Graphics}}.
+\newblock
+
+
+\bibitem[Sch\"{o}nberger et~al\mbox{.}(2016)]%
+        {schoenberger2016mvs}
+\bibfield{author}{\bibinfo{person}{Johannes~Lutz Sch\"{o}nberger},
+  \bibinfo{person}{Enliang Zheng}, \bibinfo{person}{Marc Pollefeys}, {and}
+  \bibinfo{person}{Jan-Michael Frahm}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Pixelwise View Selection for Unstructured
+  Multi-View Stereo}. In \bibinfo{booktitle}{\emph{European Conference on
+  Computer Vision (ECCV)}}.
+\newblock
+
+
+\bibitem[Sengupta et~al\mbox{.}(2019)]%
+        {sengupta2019neural}
+\bibfield{author}{\bibinfo{person}{Soumyadip Sengupta}, \bibinfo{person}{Jinwei
+  Gu}, \bibinfo{person}{Kihwan Kim}, \bibinfo{person}{Guilin Liu},
+  \bibinfo{person}{David~W Jacobs}, {and} \bibinfo{person}{Jan Kautz}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Neural inverse rendering of an indoor scene from a
+  single image}. In \bibinfo{booktitle}{\emph{Proc.~ICCV}}.
+\newblock
+
+
+\bibitem[Silberman et~al\mbox{.}(2012)]%
+        {silberman2012indoor}
+\bibfield{author}{\bibinfo{person}{Nathan Silberman}, \bibinfo{person}{Derek
+  Hoiem}, \bibinfo{person}{Pushmeet Kohli}, {and} \bibinfo{person}{Rob
+  Fergus}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Indoor segmentation and support inference from rgbd
+  images}. In \bibinfo{booktitle}{\emph{Proc.~ECCV}}.
+\newblock
+
+
+\bibitem[Sitzmann et~al\mbox{.}(2019)]%
+        {sitzmann2019deepvoxels}
+\bibfield{author}{\bibinfo{person}{Vincent Sitzmann}, \bibinfo{person}{Justus
+  Thies}, \bibinfo{person}{Felix Heide}, \bibinfo{person}{Matthias
+  Nie{\ss}ner}, \bibinfo{person}{Gordon Wetzstein}, {and}
+  \bibinfo{person}{Michael Zollhofer}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Deepvoxels: Learning persistent 3d feature
+  embeddings}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{2437--2446}.
+\newblock
+
+
+\bibitem[Somanath and Kurz(2021)]%
+        {somanath2021hdr}
+\bibfield{author}{\bibinfo{person}{Gowri Somanath} {and}
+  \bibinfo{person}{Daniel Kurz}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{HDR Environment Map Estimation for Real-Time
+  Augmented Reality}. In \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF
+  Conference on Computer Vision and Pattern Recognition}}.
+  \bibinfo{pages}{11298--11306}.
+\newblock
+
+
+\bibitem[Song and Funkhouser(2019)]%
+        {Song_2019_CVPR}
+\bibfield{author}{\bibinfo{person}{Shuran Song} {and} \bibinfo{person}{Thomas
+  Funkhouser}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Neural Illumination: Lighting Prediction for Indoor
+  Environments}. In \bibinfo{booktitle}{\emph{Proc.~CVPR}}.
+  \bibinfo{pages}{6918--6926}.
+\newblock
+
+
+\bibitem[Srinivasan et~al\mbox{.}(2020)]%
+        {srinivasan2020lighthouse}
+\bibfield{author}{\bibinfo{person}{Pratul~P Srinivasan}, \bibinfo{person}{Ben
+  Mildenhall}, \bibinfo{person}{Matthew Tancik}, \bibinfo{person}{Jonathan~T
+  Barron}, \bibinfo{person}{Richard Tucker}, {and} \bibinfo{person}{Noah
+  Snavely}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Lighthouse: Predicting Lighting Volumes for
+  Spatially-Coherent Illumination}. In \bibinfo{booktitle}{\emph{Proc.~CVPR}}.
+  \bibinfo{pages}{8080--8089}.
+\newblock
+
+
+\bibitem[Wang et~al\mbox{.}(2021)]%
+        {wang2021learning}
+\bibfield{author}{\bibinfo{person}{Zian Wang}, \bibinfo{person}{Jonah Philion},
+  \bibinfo{person}{Sanja Fidler}, {and} \bibinfo{person}{Jan Kautz}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Learning indoor inverse rendering with 3d
+  spatially-varying lighting}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF International Conference on Computer Vision}}.
+  \bibinfo{pages}{12538--12547}.
+\newblock
+
+
+\bibitem[Wei et~al\mbox{.}(2020)]%
+        {wei2020object}
+\bibfield{author}{\bibinfo{person}{Xin Wei}, \bibinfo{person}{Guojun Chen},
+  \bibinfo{person}{Yue Dong}, \bibinfo{person}{Stephen Lin}, {and}
+  \bibinfo{person}{Xin Tong}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Object-based Illumination Estimation with
+  Rendering-aware Neural Networks}.
+\newblock \bibinfo{journal}{\emph{Proc.~ECCV}}.
+\newblock
+
+
+\bibitem[Zhan et~al\mbox{.}(2022)]%
+        {zhan2022gmlight}
+\bibfield{author}{\bibinfo{person}{Fangneng Zhan}, \bibinfo{person}{Yingchen
+  Yu}, \bibinfo{person}{Changgong Zhang}, \bibinfo{person}{Rongliang Wu},
+  \bibinfo{person}{Wenbo Hu}, \bibinfo{person}{Shijian Lu},
+  \bibinfo{person}{Feiying Ma}, \bibinfo{person}{Xuansong Xie}, {and}
+  \bibinfo{person}{Ling Shao}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Gmlight: Lighting estimation via geometric
+  distribution approximation}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Image Processing}}
+  \bibinfo{volume}{31} (\bibinfo{year}{2022}), \bibinfo{pages}{2268--2278}.
+\newblock
+
+
+\bibitem[Zhan et~al\mbox{.}(2021a)]%
+        {zhan2021sparse}
+\bibfield{author}{\bibinfo{person}{Fangneng Zhan}, \bibinfo{person}{Changgong
+  Zhang}, \bibinfo{person}{Wenbo Hu}, \bibinfo{person}{Shijian Lu},
+  \bibinfo{person}{Feiying Ma}, \bibinfo{person}{Xuansong Xie}, {and}
+  \bibinfo{person}{Ling Shao}.} \bibinfo{year}{2021}\natexlab{a}.
+\newblock \showarticletitle{Sparse needlets for lighting estimation with
+  spherical transport loss}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF International Conference on Computer Vision}}.
+  \bibinfo{pages}{12830--12839}.
+\newblock
+
+
+\bibitem[Zhan et~al\mbox{.}(2021b)]%
+        {zhan2021emlight}
+\bibfield{author}{\bibinfo{person}{Fangneng Zhan}, \bibinfo{person}{Changgong
+  Zhang}, \bibinfo{person}{Yingchen Yu}, \bibinfo{person}{Yuan Chang},
+  \bibinfo{person}{Shijian Lu}, \bibinfo{person}{Feiying Ma}, {and}
+  \bibinfo{person}{Xuansong Xie}.} \bibinfo{year}{2021}\natexlab{b}.
+\newblock \showarticletitle{Emlight: Lighting estimation via spherical
+  distribution approximation}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  AAAI Conference on Artificial Intelligence}}, Vol.~\bibinfo{volume}{35}.
+  \bibinfo{pages}{3287--3295}.
+\newblock
+
+
+\bibitem[Zhang et~al\mbox{.}(2021)]%
+        {zhang2021consistent}
+\bibfield{author}{\bibinfo{person}{Zhoutong Zhang}, \bibinfo{person}{Forrester
+  Cole}, \bibinfo{person}{Richard Tucker}, \bibinfo{person}{William~T Freeman},
+  {and} \bibinfo{person}{Tali Dekel}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Consistent depth of moving objects in video}.
+\newblock \bibinfo{journal}{\emph{ACM Transactions on Graphics (TOG)}}
+  \bibinfo{volume}{40}, \bibinfo{number}{4} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{1--12}.
+\newblock
+
+
+\bibitem[Zhao and Guo(2020)]%
+        {zhao2020pointar}
+\bibfield{author}{\bibinfo{person}{Yiqin Zhao} {and} \bibinfo{person}{Tian
+  Guo}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Pointar: Efficient lighting estimation for mobile
+  augmented reality}. In \bibinfo{booktitle}{\emph{European Conference on
+  Computer Vision}}. Springer, \bibinfo{pages}{678--693}.
+\newblock
+
+
+\bibitem[Zhu et~al\mbox{.}(2022)]%
+        {zhu2022irisformer}
+\bibfield{author}{\bibinfo{person}{Rui Zhu}, \bibinfo{person}{Zhengqin Li},
+  \bibinfo{person}{Janarbek Matai}, \bibinfo{person}{Fatih Porikli}, {and}
+  \bibinfo{person}{Manmohan Chandraker}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{IRISformer: Dense Vision Transformers for
+  Single-Image Inverse Rendering in Indoor Scenes}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition}}. \bibinfo{pages}{2822--2831}.
+\newblock
+
+
+\end{thebibliography}

@@ -1,0 +1,109 @@
+\documentclass[acmtog]{acmart}
+
+\usepackage{booktabs} % For formal tables
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{animate}
+\usepackage[utf8]{inputenc}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{appendix}
+
+\citestyle{acmauthoryear}
+\setcitestyle{square,nosort}
+
+
+%\acmSubmissionID{draft}
+
+
+\newenvironment{tight_itemize}{
+\begin{itemize}
+  \setlength{\topsep}{0pt}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+% TOG prefers author-name bib system with square brackets
+%\citestyle{acmauthoryear}
+
+\usepackage[ruled]{algorithm2e} % For algorithms
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+
+% Metadata Information
+\acmJournal{TOG}
+
+% Document starts
+\begin{document}
+\title{Spatiotemporally Consistent HDR Indoor Lighting Estimation}
+
+
+\author{Zhengqin Li}
+\affiliation{
+\institution{Meta Reality Labs Research, UC San Diego}
+\country{USA}
+}
+\author{Li Yu}
+\affiliation{
+\institution{Meta Reality Labs}
+\country{USA}
+}
+\author{Mikhail Okunev}
+\affiliation{
+\institution{Meta Reality Labs Research}
+\country{USA}
+}
+\author{Manmohan Chandraker}
+\affiliation{
+\institution{UC San Diego}
+\country{USA}
+}
+\author{Zhao Dong}
+\affiliation{
+\institution{Meta Reality Labs Research}
+\country{USA}
+}
+
+
+\begin{abstract}
+We propose a physically-motivated deep learning framework to solve a general version of the challenging indoor lighting estimation problem. Given a single LDR image with a depth map, our method predicts spatially consistent lighting at any given image position. Particularly, when the input is an LDR video sequence, our framework not only progressively refines the lighting prediction as it sees more regions, but also preserves temporal consistency by keeping the refinement smooth. Our framework reconstructs a spherical Gaussian lighting volume (SGLV) through a tailored 3D encoder-decoder, which enables spatially consistent lighting prediction through volume ray tracing, a hybrid blending network for detailed environment maps, an in-network Monte-Carlo rendering layer to enhance photorealism for virtual object insertion, and recurrent neural networks (RNN) to achieve temporally consistent lighting prediction with a video sequence as the input. For training, we significantly enhance the OpenRooms public dataset of photorealistic synthetic indoor scenes with around 360K HDR environment maps of much higher resolution and 38K video sequences, rendered with GPU-based path tracing. Experiments show that our framework achieves lighting prediction with higher quality compared to state-of-the-art single-image or video-based methods, leading to photorealistic AR applications such as object insertion. 
+
+\end{abstract}
+\begin{teaserfigure}
+\animategraphics[width=\textwidth,poster=first]{2}{figures/teaser/frame}{00}{11}
+\caption{We propose the first framework that achieves consistent high-quality indoor lighting prediction in both spatial and temporal domains. Our predicted HDR environment maps recover not only the visible and invisible light sources but also detailed reflection of visible surfaces, which enables realistic object insertion for both mirror and specular objects. Moreover, when the input is a video sequence, our framework can progressively refine our lighting prediction while keeping the transition smooth. (Please use Adobe Acrobat and click the figure to see the animated results.)}
+\label{fig:teaser}
+\end{teaserfigure}
+
+
+\maketitle
+
+\input{sources/introduction}
+\input{sources/relatedworks}
+\input{sources/volumerendering}
+\input{sources/network}
+\input{sources/experiment}
+\input{sources/conclusion}
+
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{ref}
+
+
+
+
+
+\end{document}

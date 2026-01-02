@@ -1,0 +1,33 @@
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\columnwidth]{figures/SGLV_figure.pdf}
+	\caption{Visualization of spherical Gaussian lighting volume.}
+	\label{fig:SGLV_Definition}
+\end{figure}
+
+\section{Spherical Gaussian Lighting Volume}
+\label{sec:volumerendering}
+
+Indoor lighting presents the most complex and diverse challenges for lighting estimation, such as complex occlusion, directional sunlight, and strong global illumination. Thus, we need a lighting representation that is expressive enough to model various types of light transport. Further, this representation should enable fusing the observations from different views, to allow extension to video inputs (\S~\ref{sec:network}).
+
+We therefore adopt a volumetric lighting representation to render an HDR environment map at any given location through differentiable volume ray tracing, which allows spatially consistent lighting prediction with details, while enabling multi-view fusion for video inputs. The starting point is the representation of \cite{srinivasan2020lighthouse}, which defines an RGB color and an opacity $\alpha$ for each voxel. Such a representation assumes each voxel uniformly emits light in every direction, hence, poorly deals with directional lighting, such as the sunlight through the windows. Following the success of the recent work \cite{li2020inverse}, we enhance the volumetric representation by introducing an additional spherical Gaussian lobe to better model directional lighting. We term our representation as spherical Gaussian lighting volume (SGLV). Similar representation is proposed in a recent work by Wang et al. \cite{wang2021learning}.
+
+
+
+Our SGLV representation is illustrated in Figure~\ref{fig:SGLV_Definition}. Besides an RGB$\alpha$ value, each voxel is augmented with three SG parameters: $\mathbf{w} \in {\mathbb{R}}^3$ to control the intensity, $\lambda  \in {\mathbb{R}}$ to control the bandwidth and unit vector $\hat{\mathbf{s}} \in {\mathbb{R}}^3$ to control the direction.  When rendering an HDR environment map using SGLV, we modify the volume ray tracing method accordingly to accumulate both the RGB value $\mathbf{c}$ and the SG parameters $\{\mathbf{w}, \lambda, \hat{\mathbf{s}}\}$ using standard differentiable volume ray tracing. More specifically, suppose we render the HDR environment map $L$ at a randomly sampled location. Let $\mathbf{\hat{l}}$ be a ray corresponding to an arbitrary pixel of $L$ and $\mathcal{I}$ be the indices of points sampled uniformly on the ray $\mathbf{\hat{l}}$, organized in ascending order according to their distance to the sampled location. The accumulation of all the SGLV parameters for the ray $\mathbf{\hat{l}}$ can be computed as: 
+\begin{equation}
+\mathbf{x_{\hat{l}}} = \sum_{i\in \mathcal{I}} \alpha_{i}\mathbf{x}_{i} \prod_{j < i, j \in \mathcal{I}} (1-\alpha_{j}), \quad \mathbf{x} \in \{\mathbf{c, w}, \lambda, \hat{\mathbf{s}}\}.
+\end{equation}
+At each step point, both $\mathbf{x}_{i}$ and $\alpha_{i, j}$ are obtained through trilinear interpolation from nearby voxels so that the whole process is differentiable. After obtaining the accumulated parameters, we compute the intensity $L_{\mathbf{\hat{l}}}$ along direction $\mathbf{\hat{l}}$ of the HDR environment map $L$ as: 
+\begin{equation}
+L_{\mathbf{\hat{l}}} = \mathbf{c_{\hat{l}}} + \mathbf{w_{\hat{l}} }\exp\Big(\lambda(\mathbf{\hat{l}\cdot\hat{s}_{\hat{l}} } - 1) \Big)
+\end{equation} 
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/SGvsRGB.pdf}
+\caption{Comparison of RGB$\alpha$ and our spherical Gaussian  lighting volume (SGLV) for indoor lighting estimation on a real example. The SGLV allows a better encoding of high-frequency directional lighting in indoor scenes, which leads to sharper highlights and shadows}
+\label{fig:SGvsRGB}
+\end{figure}
+
+Figure \ref{fig:SGvsRGB} shows a comparison of lighting prediction between the  RGB$\alpha$ volume and our proposed SGLV. We train our proposed method with two different lighting representations and then use the lighting predictions from two different representations to render virtual mirror spheres into a real indoor scene image.  It clearly shows that our SGLV representation can better model the high-frequency directional sunlight coming from the window, leading to more realistic specular highlights and shadows. 
